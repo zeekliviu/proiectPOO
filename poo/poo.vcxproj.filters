@@ -20,8 +20,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Header.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>
