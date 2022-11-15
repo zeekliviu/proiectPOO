@@ -15,8 +15,34 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="proiectPOO.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="spectacolTeatru.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="biletLoja.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="biletCategoria1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="biletCategoria2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="spectacolTeatru.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="biletLoja.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="biletCategoria1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="biletCategoria2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
