@@ -4,31 +4,101 @@
 #include "biletCategoria2.h"
 spectacolTeatru::spectacolTeatru() : nrMaximLocuri(0)
 {
-	bileteCat1 = new biletCategoria1[nrMaximLocuri];
-	bileteCat2 = new biletCategoria2[nrMaximLocuri];
-	bileteLoja = new biletLoja[nrMaximLocuri];
+	bileteCat1 = nullptr;
+	bileteCat2 = nullptr;
+	bileteLoja = nullptr;
 	nrBileteCat1 = nrMaximLocuri;
 	nrBileteCat2 = nrMaximLocuri;
 	nrBileteLoja = nrMaximLocuri;
+	nrRanduriCat1 = nrMaximLocuri;
+	nrRanduriCat2 = nrMaximLocuri;
+	nrRanduriLoja = nrMaximLocuri;
+	denumire = nullptr;
 }
 spectacolTeatru::spectacolTeatru(int nrMaximLocuri) : nrMaximLocuri(nrMaximLocuri)
 {
-	bileteCat1 = new biletCategoria1[this->nrMaximLocuri];
-	bileteCat2 = new biletCategoria2[this->nrMaximLocuri];
-	bileteLoja = new biletLoja[this->nrMaximLocuri];
-	nrBileteCat1 = this->nrMaximLocuri;
-	nrBileteCat2 = this->nrMaximLocuri;
-	nrBileteLoja = this->nrMaximLocuri;
-	if (nrMaximLocuri > 0)
-		for (int i = 0; i < nrMaximLocuri; i++)
-		{
-			bileteCat1[i] = biletCategoria1();
-			bileteCat2[i] = biletCategoria2();
-			bileteLoja[i] = biletLoja();
-			bileteCat1[i].setId("123");
-			bileteCat2[i].setId("321");
-			bileteLoja[i].setId("231");
-		}
+	bileteCat1 = nullptr;
+	bileteCat2 = nullptr;
+	bileteLoja = nullptr;
+	nrBileteCat1 = nrMaximLocuri;
+	nrBileteCat2 = nrMaximLocuri;
+	nrBileteLoja = nrMaximLocuri;
+	nrRanduriCat1 = nrMaximLocuri;
+	nrRanduriCat2 = nrMaximLocuri;
+	nrRanduriLoja = nrMaximLocuri;
+	denumire = nullptr;
+}
+spectacolTeatru::spectacolTeatru(const char* denumire) : nrMaximLocuri(0)
+{
+	bileteCat1 = nullptr;
+	bileteCat2 = nullptr;
+	bileteLoja = nullptr;
+	nrBileteCat1 = nrMaximLocuri;
+	nrBileteCat2 = nrMaximLocuri;
+	nrBileteLoja = nrMaximLocuri;
+	nrRanduriCat1 = nrMaximLocuri;
+	nrRanduriCat2 = nrMaximLocuri;
+	nrRanduriLoja = nrMaximLocuri;
+	if (denumire != nullptr && strlen(denumire) > 0)
+	{
+		this->denumire = new char[strlen(denumire) + 1];
+		strcpy_s(this->denumire, strlen(denumire) + 1, denumire);
+	}
+	else
+		this->denumire = nullptr;
+}
+spectacolTeatru::spectacolTeatru(int nrMaximLocuri, const char* denumire) : nrMaximLocuri(nrMaximLocuri)
+{
+	bileteCat1 = nullptr;
+	bileteCat2 = nullptr;
+	bileteLoja = nullptr;
+	nrBileteCat1 = nrMaximLocuri;
+	nrBileteCat2 = nrMaximLocuri;
+	nrBileteLoja = nrMaximLocuri;
+	nrRanduriCat1 = nrMaximLocuri;
+	nrRanduriCat2 = nrMaximLocuri;
+	nrRanduriLoja = nrMaximLocuri;
+	if (denumire != nullptr && strlen(denumire) > 0)
+	{
+		this->denumire = new char[strlen(denumire) + 1];
+		strcpy_s(this->denumire, strlen(denumire) + 1, denumire);
+	}
+	else
+		this->denumire = nullptr;
+}
+spectacolTeatru::~spectacolTeatru()
+{
+	if (bileteCat1)
+	{
+		for (int i = 0; i < nrRanduriCat1; i++)
+			delete[] bileteCat1[i];
+		delete[] bileteCat1;
+		bileteCat1 = nullptr;
+	}
+	if (bileteCat2)
+	{
+		for (int i = 0; i < nrRanduriCat2; i++)
+			delete[] bileteCat2[i];
+		delete[] bileteCat2;
+		bileteCat2 = nullptr;
+	}
+	if (bileteLoja)
+	{
+		for (int i = 0; i < nrRanduriLoja; i++)
+			delete[] bileteLoja[i];
+		delete[] bileteLoja;
+		bileteLoja = nullptr;
+	}
+	if (denumire)
+		delete[] denumire, denumire = nullptr;
+}
+char* spectacolTeatru::getDenumire()
+{
+	return denumire;
+}
+int spectacolTeatru::getNrMaximLocuri()
+{
+	return nrMaximLocuri;
 }
 int spectacolTeatru::getNrBileteCat1()
 {
@@ -42,33 +112,39 @@ int spectacolTeatru::getNrBileteLoja()
 {
 	return nrBileteLoja;
 }
-spectacolTeatru::~spectacolTeatru()
+biletCategoria1* spectacolTeatru::getRandCat1(int i)
 {
-	if (bileteCat1)
-		delete[] bileteCat1, bileteCat1 = nullptr;
-	if (bileteCat2)
-		delete[] bileteCat2, bileteCat2 = nullptr;
-	if (bileteLoja)
-		delete[] bileteLoja, bileteLoja = nullptr;
-}
-biletCategoria1 spectacolTeatru::getBiletCat1(int i)
-{
-	if (i >= 0 && i < nrBileteCat1)
+	if (i >= 0 && i < nrRanduriCat1)
 		return bileteCat1[i];
-	else
-		return biletCategoria1();
+	return nullptr;
 }
-biletCategoria2 spectacolTeatru::getBiletCat2(int i)
+biletCategoria2* spectacolTeatru::getRandCat2(int i)
 {
-	if (i >= 0 && i < nrBileteCat2)
+	if (i >= 0 && i < nrRanduriCat2)
 		return bileteCat2[i];
-	else
-		return biletCategoria2();
+	return nullptr;
 }
-biletLoja spectacolTeatru::getBiletLoja(int i)
+biletLoja* spectacolTeatru::getRandLoja(int i)
 {
-	if (i >= 0 && i < nrBileteLoja)
+	if (i >= 0 && i < nrRanduriLoja)
 		return bileteLoja[i];
-	else
-		return biletLoja();
+	return nullptr;
+}
+biletCategoria1 spectacolTeatru::getBiletCat1(int i, int j)
+{
+	if (i >= 0 && i < nrRanduriCat1 && j >= 0 && j < nrBileteCat1)
+		return bileteCat1[i][j];
+	return biletCategoria1();
+}
+biletCategoria2 spectacolTeatru::getBiletCat2(int i, int j)
+{
+	if (i >= 0 && i < nrRanduriCat2 && j >= 0 && j < nrBileteCat2)
+		return bileteCat2[i][j];
+	return biletCategoria2();
+}
+biletLoja spectacolTeatru::getBiletLoja(int i, int j)
+{
+	if (i >= 0 && i < nrRanduriLoja && j >= 0 && j < nrBileteLoja)
+		return bileteLoja[i][j];
+	return biletLoja();
 }
