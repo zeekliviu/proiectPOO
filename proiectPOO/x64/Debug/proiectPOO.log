@@ -1,2 +1,7 @@
-﻿  spectacolTeatru.cpp
+﻿  main.cpp
+  spectacolTeatru.cpp
+  Generating Code...
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(318): warning C4715: 'spectacolTeatru::getDenumire': not all control paths return a value
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(327): warning C4715: 'spectacolTeatru::getData': not all control paths return a value
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(336): warning C4715: 'spectacolTeatru::getOra': not all control paths return a value
   proiectPOO.vcxproj -> C:\Users\thepr\Desktop\proiect POO\proiectPOO\x64\Debug\proiectPOO.exe
