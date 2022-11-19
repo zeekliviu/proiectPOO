@@ -1,10 +1,24 @@
 #pragma once
 class biletCategoria1
 {
-	char* id;
+private:
+	int id;
+	char* numeSpectator;
+	int* UID;
+	int dimUID;
 public:
 	biletCategoria1();
-	biletCategoria1(char* id);
-	char* getId();
-	void setId(const char* s);
+	biletCategoria1(int);
+	biletCategoria1(int, const char*);
+	biletCategoria1(const char*, int);
+	biletCategoria1(const biletCategoria1&);
+	biletCategoria1& operator=(const biletCategoria1&);
+	~biletCategoria1();
+	int getId();
+	char* getNumeSpectator();
+	int* getUID();
+	int getdimUID();
+	bool checkUID(int*, int);
+	void setId(const int);
+	void setNumeSpectator(const char*);
 };

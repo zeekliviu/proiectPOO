@@ -22,25 +22,27 @@ public:
 	static int idSpectacol;
 	spectacolTeatru(); // testat
 	spectacolTeatru(const int); // testat
-	spectacolTeatru(const char*); // pointerii data si ora se afiseaza cu valori random
-	spectacolTeatru(const char*, const char*); // pointerul ora se afiseaza cu valori random
-	spectacolTeatru(const char*, const char*, const char*); // testat
-	spectacolTeatru(const int, const char*); // pointerii data si ora se afiseaza cu valori random
-	spectacolTeatru(const int, const char*, const char*); // pointerul ora se afiseaza cu valori random
-	spectacolTeatru(const int, const char*, const char*, const char*); // testat
-	spectacolTeatru(const int, const char*, const int); // pointerii data si ora se afiseaza cu valori random
-	spectacolTeatru(const int, const char*, const char*, const int); // pointerul ora se afiseaza cu valori random
-	spectacolTeatru(const int, const char*, const char*, const char*, const int); //testat
-	spectacolTeatru(const int, const char*, const int, const int); //testat
-	spectacolTeatru(const int, const char*, const char*, const int, const int); //testat
-	spectacolTeatru(const int, const char*, const char*, const char*, const int, const int); //testat
-	spectacolTeatru(const int, const char*, const int, const int, const int, const int); //testat
+	spectacolTeatru(const char*); 
+	spectacolTeatru(const char*, const char*); 
+	spectacolTeatru(const char*, const char*, const char*);
+	spectacolTeatru(const int, const char*); 
+	spectacolTeatru(const int, const char*, const char*); 
+	spectacolTeatru(const int, const char*, const char*, const char*); 
+	spectacolTeatru(const int, const char*, const int); 
+	spectacolTeatru(const int, const char*, const char*, const int);
+	spectacolTeatru(const int, const char*, const char*, const char*, const int);
+	spectacolTeatru(const int, const char*, const int, const int); 
+	spectacolTeatru(const int, const char*, const char*, const int, const int);
+	spectacolTeatru(const int, const char*, const char*, const char*, const int, const int); 
+	spectacolTeatru(const int, const char*, const int, const int, const int, const int); 
 	spectacolTeatru(const int, const char*, const char*, const int, const int, const int, const int); 
-	spectacolTeatru(const int, const char*, const char*, const char*, const int, const int, const int, const int); // testat
-	spectacolTeatru(const int, const char*, const int, const int, const int, const int, const int, const int); // testat
-	spectacolTeatru(const int, const char*, const char*, const int, const int, const int, const int, const int, const int); // testat
-	spectacolTeatru(const int, const char*, const char*, const char*, const int, const int, const int, const int, const int, const int); // testat
+	spectacolTeatru(const int, const char*, const char*, const char*, const int, const int, const int, const int); 
+	spectacolTeatru(const int, const char*, const int, const int, const int, const int, const int, const int);
+	spectacolTeatru(const int, const char*, const char*, const int, const int, const int, const int, const int, const int);
+	spectacolTeatru(const int, const char*, const char*, const char*, const int, const int, const int, const int, const int, const int);
 	spectacolTeatru(const spectacolTeatru&);
+	spectacolTeatru& operator=(const spectacolTeatru&);
+	~spectacolTeatru();
 	char* getDenumire();
 	char* getData();
 	char* getOra();
@@ -51,12 +53,22 @@ public:
 	int getNrBileteCat1();
 	int getNrBileteCat2();
 	int getNrBileteLoja();
+	biletCategoria1** getBileteCat1();
+	biletCategoria2** getBileteCat2();
+	biletLoja** getBileteLoja();
 	biletCategoria1* getRandCat1(int);
 	biletCategoria2* getRandCat2(int);
 	biletLoja* getRandLoja(int);
 	biletCategoria1 getBiletCat1(int, int);
 	biletCategoria2 getBiletCat2(int, int);
 	biletLoja getBiletLoja(int, int);
-	~spectacolTeatru();
+	void setDenumire(const char*);
+	void setData(const char*);
+	void setOra(const char*);
+	void setBileteCat1(int, int, biletCategoria1**);
+	void setBileteCat2(int, int, biletCategoria2**);
+	void setBileteLoja(int, int, biletLoja**);
+	static void setIdSpectacol(const int);
+	void rezervaBiletCat1(int, int); // de implementat
 };
 
