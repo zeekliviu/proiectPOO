@@ -96,6 +96,56 @@ biletCategoria1& biletCategoria1::operator=(const biletCategoria1& b)
 	}
 	return *this;
 }
+std::ostream& operator<<(std::ostream& out, const biletCategoria1& b)
+{
+	out << "Id: " << b.id << std::endl;
+	out << "Nume spectator: " << b.numeSpectator << std::endl;
+	out << "UID: ";
+	for (int i = 0; i < b.dimUID; i++)
+		out << b.UID[i];
+	out << std::endl<<std::endl;
+	return out;
+}
+std::istream& operator>>(std::istream& in, biletCategoria1& b)
+{
+	std::cout << "Id: ";
+	in >> b.id;
+	in.get();
+	std::cout << "Nume spectator: ";
+	char buffer[50];
+	in.getline(buffer, 50);
+	if (b.numeSpectator != nullptr)
+		delete[] b.numeSpectator, b.numeSpectator=nullptr;
+	b.numeSpectator = new char[strlen(buffer) + 1];
+	strcpy_s(b.numeSpectator, strlen(buffer) + 1, buffer);
+	if (b.UID != nullptr)
+		delete[] b.UID, b.UID = nullptr;;
+	b.UID = new int[log10(b.id) + strlen(b.numeSpectator) + 1];
+	b.dimUID = log10(b.id) + strlen(b.numeSpectator) + 1;
+	int i = 0;
+	int copie = b.id;
+	while (copie)
+	{
+		b.UID[i] = copie % 10;
+		copie /= 10;
+		i++;
+	}
+	for (int j = i; j < b.dimUID; j++)
+		b.UID[j] = b.numeSpectator[j - i];
+	return in;
+}
+bool biletCategoria1::operator==(const biletCategoria1& b)
+{
+	if (strcmp(this->numeSpectator,b.numeSpectator))
+		return false;
+	return true;
+}
+bool biletCategoria1::operator<(const biletCategoria1& b)
+{
+	if (this->id < b.id)
+		return true;
+	return true;
+}
 biletCategoria1::~biletCategoria1()
 {
 	if (numeSpectator)

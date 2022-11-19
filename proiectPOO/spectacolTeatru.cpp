@@ -618,6 +618,180 @@ spectacolTeatru& spectacolTeatru::operator=(const spectacolTeatru& st)
 	}
 	return *this;
 }
+std::ostream& operator<<(std::ostream& out, const spectacolTeatru& st)
+{
+	out << "Spectacolul ";
+	if (st.denumire)
+		out << st.denumire << " ";
+	else
+		out << "Necunoscut ";
+	out << "are loc la data de ";
+	if (st.data)
+		out << st.data << " ";
+	else
+		out << "necunoscuta ";
+	out << "si la ora ";
+	if (st.ora)
+		out << st.ora << ".";
+	else
+		out << " necunoscuta.";
+	out << "\n\nBilete categoria 1: " << std::endl<<std::endl;
+	if (st.bileteCat1 != nullptr)
+	{
+		for (int i = 0; i < st.nrRanduriCat1; i++)
+		{
+			for (int j = 0; j < st.nrBileteCat1; j++)
+				out << st.bileteCat1[i][j];
+			out << std::endl<<std::endl;
+		}
+	}
+	else out << "nu exista." << std::endl<<std::endl;
+	out << "\n\nBilete categoria 2: " << std::endl<<std::endl;
+	if (st.bileteCat2 != nullptr)
+	{
+		for (int i = 0; i < st.nrRanduriCat2; i++)
+		{
+			for (int j = 0; j < st.nrBileteCat2; j++)
+				out << st.bileteCat2[i][j];
+			out << std::endl<<std::endl;
+		}
+	}
+	else out << "nu exista." << std::endl<<std::endl;
+	out << "\n\nBilete loja: " << std::endl<<std::endl;
+	if (st.bileteLoja != nullptr)
+	{
+		for (int i = 0; i < st.nrRanduriLoja; i++)
+		{
+			for (int j = 0; j < st.nrBileteLoja; j++)
+				out << st.bileteLoja[i][j];
+			out << std::endl<<std::endl;
+		}
+	}
+	else out << "nu exista." << std::endl<<std::endl;
+	return out;
+}
+std::istream& operator>>(std::istream& in, spectacolTeatru& st)
+{
+	char buffer[100];
+	std::cout << "Denumire spectacol: ";
+	in.getline(buffer,100);
+	if (st.denumire != nullptr)
+		delete[] st.denumire, st.denumire=nullptr;
+	st.denumire = new char[strlen(buffer) + 1];
+	strcpy_s(st.denumire, strlen(buffer) + 1, buffer);
+	std::cout << "Data spectacol: ";
+	in.getline(buffer, 30);
+	if(st.data!=nullptr)
+		delete[] st.data, st.data = nullptr;
+	st.data = new char[strlen(buffer) + 1];
+	strcpy_s(st.data, strlen(buffer) + 1, buffer);
+	std::cout << "Ora spectacol: ";
+	in.getline(buffer, 20);
+	if (st.ora != nullptr)
+		delete[] st.ora, st.ora = nullptr;
+	st.ora = new char[strlen(buffer) + 1];
+	strcpy_s(st.ora, strlen(buffer) + 1, buffer);
+	std::cout << "Locuri disponibile: " << st.nrMaximLocuri<<std::endl;
+	std::cout << "Nr. randuri Categoria 1: ";
+	in >> st.nrRanduriCat1;
+	std::cout << "Nr. bilete pe rand Categoria 1: ";
+	in >> st.nrBileteCat1;
+	std::cout << "Nr. randuri Categoria 2: ";
+	in >> st.nrRanduriCat2;
+	std::cout << "Nr. bilete pe rand Categoria 2: ";
+	in >> st.nrBileteCat2;
+	std::cout << "Nr. randuri Loja: ";
+	in >> st.nrRanduriLoja;
+	std::cout << "Nr. bilete pe rand Loja: ";
+	in >> st.nrBileteLoja;
+	if (st.nrRanduriCat1 > 0 && st.nrBileteCat1 > 0)
+	{
+		if(st.nrRanduriCat1*st.nrBileteCat1<=st.nrMaximLocuri)
+		{
+			st.bileteCat1 = new biletCategoria1 * [st.nrRanduriCat1];
+			for (int i = 0; i < st.nrRanduriCat1; i++)
+				st.bileteCat1[i] = new biletCategoria1[st.nrBileteCat1];
+			for (int i = 0; i < st.nrRanduriCat1; i++)
+				for (int j = 0; j < st.nrBileteCat1; j++)
+				{
+					std::cout << "Bilet categoria 1, rand "<< i+1<<",loc "<<j+1<<":\n";
+					in >> st.bileteCat1[i][j];
+				}
+		}
+		else
+		{
+			st.bileteCat1 = nullptr;
+			st.nrRanduriCat1 = st.nrBileteCat1 = 0;
+		}
+	}
+	else
+	{
+		st.nrRanduriCat1 = st.nrBileteCat1 = 0;
+		st.bileteCat1 = nullptr;
+	}
+	if (st.nrRanduriCat2 > 0 && st.nrBileteCat2 > 0)
+	{
+			if (st.nrRanduriCat2 * st.nrBileteCat2 <= st.nrMaximLocuri - st.nrRanduriCat1 * st.nrBileteCat1)
+			{
+				st.bileteCat2 = new biletCategoria2 * [st.nrRanduriCat2];
+				for (int i = 0; i < st.nrRanduriCat2; i++)
+					st.bileteCat2[i] = new biletCategoria2[st.nrBileteCat2];
+				for (int i = 0; i < st.nrRanduriCat2; i++)
+					for (int j = 0; j < st.nrBileteCat2; j++)
+					{
+						std::cout << "Bilet categoria 2, rand " << i + 1 << ",loc " << j + 1 << ":\n";
+						in >> st.bileteCat2[i][j];
+					}
+			}
+			else
+			{
+				st.bileteCat2 = nullptr;
+				st.nrRanduriCat2 = st.nrBileteCat2 = 0;
+			}
+	}
+	else
+	{
+		st.nrRanduriCat2 = st.nrBileteCat2 = 0;
+		st.bileteCat2 = nullptr;
+	}
+	if (st.nrBileteLoja > 0 && st.nrRanduriLoja > 0)
+	{
+		
+		if (st.nrRanduriLoja * st.nrBileteLoja <= st.nrMaximLocuri - st.nrRanduriCat1 * st.nrBileteCat1 - st.nrRanduriCat2 * st.nrBileteCat2)
+			{
+				st.bileteLoja = new biletLoja * [st.nrRanduriLoja];
+				for (int i = 0; i < st.nrRanduriLoja; i++)
+					st.bileteLoja[i] = new biletLoja[st.nrBileteLoja];
+				for (int i = 0; i < st.nrRanduriLoja; i++)
+					for (int j = 0; j < st.nrBileteLoja; j++)
+					{
+						std::cout << "Bilet loja, rand " << i + 1 << ",loc " << j + 1 << ":\n";
+						in >> st.bileteLoja[i][j];
+					}
+			}
+		else
+		{
+				st.nrRanduriLoja = st.nrBileteLoja = 0;
+				st.bileteLoja = nullptr;
+		}
+	}
+	else
+	{
+		st.nrRanduriLoja = st.nrBileteLoja = 0;
+		st.bileteLoja = nullptr;
+	}
+	return in;
+}
+spectacolTeatru::operator int()
+{
+	return nrBileteCat1*nrRanduriCat1 + nrBileteCat2*nrRanduriCat2 + nrBileteLoja*nrRanduriLoja;
+}
+bool spectacolTeatru::operator!()
+{
+	if (nrBileteCat1 * nrRanduriCat1 == nrBileteCat2 * nrRanduriCat2 && nrBileteCat2 * nrRanduriCat2 == nrBileteLoja * nrRanduriLoja)
+		return true;
+	return false;
+}
 spectacolTeatru::~spectacolTeatru()
 {
 	if (bileteCat1!=nullptr)

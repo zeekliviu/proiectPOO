@@ -20,8 +20,8 @@ private:
 	int nrBileteLoja;
 public:
 	static int idSpectacol;
-	spectacolTeatru(); // testat
-	spectacolTeatru(const int); // testat
+	spectacolTeatru();
+	spectacolTeatru(const int); 
 	spectacolTeatru(const char*); 
 	spectacolTeatru(const char*, const char*); 
 	spectacolTeatru(const char*, const char*, const char*);
@@ -42,6 +42,10 @@ public:
 	spectacolTeatru(const int, const char*, const char*, const char*, const int, const int, const int, const int, const int, const int);
 	spectacolTeatru(const spectacolTeatru&);
 	spectacolTeatru& operator=(const spectacolTeatru&);
+	friend std::ostream& operator<<(std::ostream&, const spectacolTeatru&);
+	friend std::istream& operator>>(std::istream&, spectacolTeatru&);
+	operator int();
+	bool operator!();
 	~spectacolTeatru();
 	char* getDenumire();
 	char* getData();
@@ -70,5 +74,7 @@ public:
 	void setBileteLoja(int, int, biletLoja**);
 	static void setIdSpectacol(const int);
 	void rezervaBiletCat1(int, int); // de implementat
+	void rezervaBiletCat2(int, int); // de implementat
+	void rezervaBiletLoja(int, int); // de implementat
 };
 

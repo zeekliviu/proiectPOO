@@ -27,12 +27,32 @@ int main()
 		UID[i] = i, cout << UID[i] << " ";
 	cout << endl;
 	cout<<b.checkUID(UID, b.getdimUID());*/
-	/*biletCategoria1 b1(b);
-	cout << "Id bilet: " << b1.getId() << endl;
-	cout << "Nume spectator: " << b1.getNumeSpectator() << endl;*/
-	/*s1.setIdSpectacol(5);
-	cout << "Id spectacol: " << s1.idSpectacol << endl;
-	spectacolTeatru s2;
-	cout << "Id spectacol " << s1.idSpectacol << endl;*/
+	/*int* p;
+	p = new int[4];
+	for (int i = 0; i < 4; i++)
+		p[i] = i;
+	for (int i = 0; i < 4; i++)
+		cout << p[i] << " ";
+	cout << endl;
+	int* aux = new int[4];
+	for (int i = 0; i < 4; i++)
+		aux[i] = p[i];
+	p = new int[5];
+	p[4] = 4;
+	for (int i = 0; i < 4; i++)
+		p[i] = aux[i];
+	for (int i = 0; i < 5; i++)
+		cout << p[i] << " ";*/
+	/*spectacolTeatru s1(100, "A",2,3,3,2,1,5);
+	bool distributieEgala = !s1;
+	cout << s1.getNrBileteCat1() << s1.getNrRanduriCat1() << endl;
+	cout << s1.getNrBileteCat2() << s1.getNrRanduriCat2() << endl;
+	cout << s1.getNrBileteLoja() << s1.getNrRanduriLoja() << endl;
+	cout << distributieEgala;*/
+	biletCategoria1 b1(1, "Popescq");
+	biletCategoria1 b2(2, "Popescu");
+	cout << b1.getId();
+	cout << b2.getId();
+	cout << (b1 < b2);
 	return 0;
 }

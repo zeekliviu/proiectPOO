@@ -13,6 +13,10 @@ public:
 	biletCategoria1(const char*, int);
 	biletCategoria1(const biletCategoria1&);
 	biletCategoria1& operator=(const biletCategoria1&);
+	friend std::ostream& operator<<(std::ostream&, const biletCategoria1&);
+	friend std::istream& operator>>(std::istream&, biletCategoria1&);
+	bool operator==(const biletCategoria1&);
+	bool operator<(const biletCategoria1&);
 	~biletCategoria1();
 	int getId();
 	char* getNumeSpectator();
