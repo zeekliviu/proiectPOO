@@ -5,8 +5,8 @@ biletCategoria1::biletCategoria1()
 	id = 0;
 	numeSpectator = new char[strlen("O persoana") + 1];
 	strcpy_s(numeSpectator, strlen("O persoana")+1,"O persoana");
-	UID = new int[log(1)+1+strlen(numeSpectator)];
-	dimUID = log(1) + strlen(numeSpectator)+1;
+	UID = new int[log10(1)+1+strlen(numeSpectator)];
+	dimUID = log10(1) + strlen(numeSpectator)+1;
 	UID[0] = 0;
 	for (int i = 1; i < dimUID; i++)
 		UID[i] = numeSpectator[i - 1];
@@ -188,29 +188,52 @@ int biletCategoria1::getdimUID()
 {
 	return dimUID;
 }
-bool biletCategoria1::checkUID(int *check, int dim)
+bool biletCategoria1::checkUID(char *check)
 {
-	if (UID != nullptr && dimUID>0)
+	if (check != nullptr)
 	{
-		if(check!=nullptr && dim>0)
+		int dimUIDchar = 0;
+		for (int i = 0; i < dimUID; i++)
 		{
-			if(dimUID==dim)
+			int copie = UID[i];
+			if (copie == 0)
+				dimUIDchar++;
+			else while (copie)
 			{
-				bool ok = true;
-				for (int i = 0; i < dimUID; i++)
-					if (check[i] != UID[i])
-						ok = false;
-				if (ok)
-					return true;
-				return false;
+				dimUIDchar++;
+				copie /= 10;
 			}
-			return false;
 		}
+		if (dimUIDchar != strlen(check))
+			return false;
+		char* UIDchar = new char[dimUIDchar + 1];
+		int i = 0;
+		for (int j = 0; j < dimUID; j++)
+		{
+			int copie = UID[j];
+			if (copie == 0)
+			{
+				UIDchar[i] = '0';
+				i++;
+			}
+			else 
+			{
+				while (copie)
+				{
+					int aux = i + log10(copie);
+					UIDchar[aux] = copie % 10 + '0';
+					copie /= 10;	
+				}
+				i += log10(UID[j]) + 1;
+			}
+		}
+		UIDchar[dimUIDchar] = '\0';
+		if (!strcmp(UIDchar, check))
+			return true;
 		return false;
 	}
 	return false;
 }
-
 void biletCategoria1::setId(const int i)
 {
 	if (i > 0)

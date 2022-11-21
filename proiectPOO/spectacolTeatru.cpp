@@ -853,6 +853,66 @@ int spectacolTeatru::getNrMaximLocuri()
 {
 	return nrMaximLocuri;
 }
+int spectacolTeatru::getNrLocuriDisponibileCat1()
+{
+	int nrLocuri = 0;
+	if (bileteCat1 != nullptr)
+		for (int i = 0; i < nrRanduriCat1; i++)
+			for (int j = 0; j < nrBileteCat1; j++)
+				if (bileteCat1[i][j].getId() == 0)
+					nrLocuri++;
+	return nrLocuri;
+}
+int spectacolTeatru::getNrLocuriDisponibileCat2()
+{
+	int nrLocuri = 0;
+	if (bileteCat2 != nullptr)
+		for (int i = 0; i < nrRanduriCat2; i++)
+			for (int j = 0; j < nrBileteCat2; j++)
+				if (bileteCat2[i][j].getId() == 0)
+					nrLocuri++;
+	return nrLocuri;
+}
+int spectacolTeatru::getNrLocuriDisponibileLoja()
+{
+	int nrLocuri = 0;
+	if (bileteLoja != nullptr)
+		for (int i = 0; i < nrRanduriLoja; i++)
+			for (int j = 0; j < nrBileteLoja; j++)
+				if (bileteLoja[i][j].getId() == 0)
+					nrLocuri++;
+	return nrLocuri;
+}
+int spectacolTeatru::getNrLocuriOcupateCat1()
+{
+	int nrLocuri = 0;
+	if (bileteCat1 != nullptr)
+		for (int i = 0; i < nrRanduriCat1; i++)
+			for (int j = 0; j < nrBileteCat1; j++)
+				if (bileteCat1[i][j].getId() != 0)
+					nrLocuri++;
+	return nrLocuri;
+}
+int spectacolTeatru::getNrLocuriOcupateCat2()
+{
+	int nrLocuri = 0;
+	if (bileteCat2 != nullptr)
+		for (int i = 0; i < nrRanduriCat2; i++)
+			for (int j = 0; j < nrBileteCat2; j++)
+				if (bileteCat2[i][j].getId() != 0)
+					nrLocuri++;
+	return nrLocuri;
+}
+int spectacolTeatru::getNrLocuriOcupateLoja()
+{
+	int nrLocuri = 0;
+	if (bileteLoja != nullptr)
+		for (int i = 0; i < nrRanduriLoja; i++)
+			for (int j = 0; j < nrBileteLoja; j++)
+				if (bileteLoja[i][j].getId() != 0)
+					nrLocuri++;
+	return nrLocuri;
+}
 int spectacolTeatru::getNrRanduriCat1()
 {
 	return nrRanduriCat1;
@@ -937,23 +997,20 @@ biletLoja* spectacolTeatru::getRandLoja(int i)
 		return bileteLoja[i];
 	return nullptr;
 }
-biletCategoria1 spectacolTeatru::getBiletCat1(int i, int j)
+biletCategoria1& spectacolTeatru::getBiletCat1(int i, int j)
 {
 	if (i >= 0 && i < nrRanduriCat1 && j >= 0 && j < nrBileteCat1)
 		return bileteCat1[i][j];
-	return biletCategoria1();
 }
-biletCategoria2 spectacolTeatru::getBiletCat2(int i, int j)
+biletCategoria2& spectacolTeatru::getBiletCat2(int i, int j)
 {
 	if (i >= 0 && i < nrRanduriCat2 && j >= 0 && j < nrBileteCat2)
 		return bileteCat2[i][j];
-	return biletCategoria2();
 }
-biletLoja spectacolTeatru::getBiletLoja(int i, int j)
+biletLoja& spectacolTeatru::getBiletLoja(int i, int j)
 {
 	if (i >= 0 && i < nrRanduriLoja && j >= 0 && j < nrBileteLoja)
 		return bileteLoja[i][j];
-	return biletLoja();
 }
 void spectacolTeatru::setDenumire(const char* denumire)
 {
@@ -1048,4 +1105,75 @@ void spectacolTeatru::setBileteLoja(int nrRanduriLoja, int nrBileteLoja, biletLo
 void spectacolTeatru::setIdSpectacol(const int i)
 {
 	idSpectacol = i;
+}
+int* spectacolTeatru::rezervaBiletCat1(int rand, int loc)
+{
+	if (rand >= 0 && rand < nrRanduriCat1 && loc >= 0 && loc < nrBileteCat1)
+		std::cin >> bileteCat1[rand][loc];
+	return bileteCat1[rand][loc].getUID();
+}
+int* spectacolTeatru::rezervaBiletCat2(int rand, int loc)
+{
+	if (rand >= 0 && rand < nrRanduriCat2 && loc >= 0 && loc < nrBileteCat2)
+		std::cin >> bileteCat2[rand][loc];
+	return bileteCat2[rand][loc].getUID();
+}
+int* spectacolTeatru::rezervaBiletLoja(int rand, int loc)
+{
+	if (rand >= 0 && rand < nrRanduriLoja && loc >= 0 && loc < nrBileteLoja)
+		std::cin >> bileteLoja[rand][loc];
+	return bileteLoja[rand][loc].getUID();
+}
+int spectacolTeatru::maximdimUIDCat1()
+{
+	int max = 0;
+	for (int i = 0; i < nrRanduriCat1; i++)
+		for (int j = 0; j < nrBileteCat1; j++)
+			if (bileteCat1[i][j].getdimUID() > max)
+				max = bileteCat1[i][j].getdimUID();
+	return max;
+}
+int spectacolTeatru::maximdimUIDCat2()
+{
+	int max = 0;
+	for (int i = 0; i < nrRanduriCat2; i++)
+		for (int j = 0; j < nrBileteCat2; j++)
+			if (bileteCat2[i][j].getdimUID() > max)
+				max = bileteCat2[i][j].getdimUID();
+	return max;
+}
+int spectacolTeatru::maximdimUIDLoja()
+{
+	int max = 0;
+	for (int i = 0; i < nrRanduriLoja; i++)
+		for (int j = 0; j < nrBileteLoja; j++)
+			if (bileteLoja[i][j].getdimUID() > max)
+				max = bileteLoja[i][j].getdimUID();
+	return max;
+}
+int spectacolTeatru::maximdimUIDTotal()
+{
+	int max = 0;
+	if(bileteCat1!=nullptr)
+	{
+		for (int i = 0; i < nrRanduriCat1; i++)
+			for (int j = 0; j < nrBileteCat1; j++)
+				if (bileteCat1[i][j].getdimUID() > max)
+					max = bileteCat1[i][j].getdimUID();
+	}
+	if(bileteCat2!=nullptr)
+	{
+		for (int i = 0; i < nrRanduriCat2; i++)
+			for (int j = 0; j < nrBileteCat2; j++)
+				if (bileteCat2[i][j].getdimUID() > max)
+					max = bileteCat2[i][j].getdimUID();
+	}
+	if(bileteLoja!=nullptr)
+	{
+		for (int i = 0; i < nrRanduriLoja; i++)
+			for (int j = 0; j < nrBileteLoja; j++)
+				if (bileteLoja[i][j].getdimUID() > max)
+					max = bileteLoja[i][j].getdimUID();
+	}
+	return max;
 }

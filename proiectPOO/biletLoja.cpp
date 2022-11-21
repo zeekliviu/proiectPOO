@@ -5,8 +5,8 @@ biletLoja::biletLoja()
 	id = 0;
 	numeSpectator = new char[strlen("O persoana") + 1];
 	strcpy_s(numeSpectator, strlen("O persoana") + 1, "O persoana");
-	UID = new int[log(1) + 1 + strlen(numeSpectator)];
-	dimUID = log(1) + strlen(numeSpectator) + 1;
+	UID = new int[log10(1) + 1 + strlen(numeSpectator)];
+	dimUID = log10(1) + strlen(numeSpectator) + 1;
 	UID[0] = 0;
 	for (int i = 1; i < dimUID; i++)
 		UID[i] = numeSpectator[i - 1];
@@ -188,29 +188,20 @@ int biletLoja::getdimUID()
 {
 	return dimUID;
 }
-bool biletLoja::checkUID(int* check, int dim)
+bool biletLoja::checkUID(char* check)
 {
-	if (UID != nullptr && dimUID > 0)
+	if (check != nullptr)
 	{
-		if (check != nullptr && dim > 0)
+		if (strlen(check) == dimUID)
 		{
-			if (dimUID == dim)
-			{
-				bool ok = true;
-				for (int i = 0; i < dimUID; i++)
-					if (check[i] != UID[i])
-						ok = false;
-				if (ok)
-					return true;
-				return false;
-			}
-			return false;
+			for (int i = 0; i < dimUID; i++)
+				if (check[i] != UID[i])
+					return false;
+			return true;
 		}
-		return false;
 	}
 	return false;
 }
-
 void biletLoja::setId(const int i)
 {
 	if (i > 0)

@@ -22,7 +22,7 @@ public:
 	char* getNumeSpectator();
 	int* getUID();
 	int getdimUID();
-	bool checkUID(int*, int);
+	bool checkUID(char*);
 	void setId(const int);
 	void setNumeSpectator(const char*);
 };

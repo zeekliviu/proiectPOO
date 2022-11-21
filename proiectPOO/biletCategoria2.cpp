@@ -5,8 +5,8 @@ biletCategoria2::biletCategoria2()
 	id = 0;
 	numeSpectator = new char[strlen("O persoana") + 1];
 	strcpy_s(numeSpectator, strlen("O persoana") + 1, "O persoana");
-	UID = new int[log(1) + 1 + strlen(numeSpectator)];
-	dimUID = log(1) + strlen(numeSpectator) + 1;
+	UID = new int[log10(1) + 1 + strlen(numeSpectator)];
+	dimUID = log10(1) + strlen(numeSpectator) + 1;
 	UID[0] = 0;
 	for (int i = 1; i < dimUID; i++)
 		UID[i] = numeSpectator[i - 1];
@@ -181,13 +181,13 @@ int biletCategoria2::getdimUID()
 {
 	return dimUID;
 }
-bool biletCategoria2::checkUID(int* check, int dim)
+bool biletCategoria2::checkUID(char* check)
 {
-	if (check != nullptr && dim > 0)
+	if (check != nullptr)
 	{
-		if (dim == dimUID)
+		if (strlen(check) == dimUID)
 		{
-			for (int i = 0; i < dim; i++)
+			for (int i = 0; i < dimUID; i++)
 				if (check[i] != UID[i])
 					return false;
 			return true;

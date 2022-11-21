@@ -51,6 +51,12 @@ public:
 	char* getData();
 	char* getOra();
 	int getNrMaximLocuri();
+	int getNrLocuriDisponibileCat1(); 
+	int getNrLocuriDisponibileCat2(); 
+	int getNrLocuriDisponibileLoja();
+	int getNrLocuriOcupateCat1();
+	int getNrLocuriOcupateCat2();
+	int getNrLocuriOcupateLoja();
 	int getNrRanduriCat1();
 	int getNrRanduriCat2();
 	int getNrRanduriLoja();
@@ -63,9 +69,9 @@ public:
 	biletCategoria1* getRandCat1(int);
 	biletCategoria2* getRandCat2(int);
 	biletLoja* getRandLoja(int);
-	biletCategoria1 getBiletCat1(int, int);
-	biletCategoria2 getBiletCat2(int, int);
-	biletLoja getBiletLoja(int, int);
+	biletCategoria1& getBiletCat1(int, int);
+	biletCategoria2& getBiletCat2(int, int);
+	biletLoja& getBiletLoja(int, int);
 	void setDenumire(const char*);
 	void setData(const char*);
 	void setOra(const char*);
@@ -73,8 +79,12 @@ public:
 	void setBileteCat2(int, int, biletCategoria2**);
 	void setBileteLoja(int, int, biletLoja**);
 	static void setIdSpectacol(const int);
-	void rezervaBiletCat1(int, int); // de implementat
-	void rezervaBiletCat2(int, int); // de implementat
-	void rezervaBiletLoja(int, int); // de implementat
+	int* rezervaBiletCat1(int, int);
+	int* rezervaBiletCat2(int, int); 
+	int* rezervaBiletLoja(int, int);
+	int maximdimUIDCat1();
+	int maximdimUIDCat2();
+	int maximdimUIDLoja();
+	int maximdimUIDTotal();
 };
 
