@@ -1,20 +1,20 @@
 #pragma once
+#include <iostream>
+using namespace std;
 class biletLoja
 {
 private:
-	int id;
+	static int id;
 	char* numeSpectator;
 	int* UID;
 	int dimUID;
 public:
 	biletLoja();
-	biletLoja(int);
-	biletLoja(int, const char*);
-	biletLoja(const char*, int);
+	biletLoja(const char*);
 	biletLoja(const biletLoja&);
 	biletLoja& operator=(const biletLoja&);
-	friend std::ostream& operator<<(std::ostream&, const biletLoja&);
-	friend std::istream& operator>>(std::istream&, biletLoja&);
+	friend ostream& operator<<(ostream&, biletLoja);
+	friend istream& operator>>(istream&, biletLoja&);
 	bool operator>(const biletLoja&);
 	bool operator>=(const biletLoja&);
 	~biletLoja();

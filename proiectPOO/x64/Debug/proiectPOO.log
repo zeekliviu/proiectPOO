@@ -1,12 +1,2 @@
-﻿  biletCategoria1.cpp
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\biletCategoria1.cpp(8,26): warning C4244: 'initializing': conversion from 'double' to 'size_t', possible loss of data
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\biletCategoria1.cpp(9,43): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\biletCategoria1.cpp(18,49): warning C4244: 'initializing': conversion from 'double' to 'size_t', possible loss of data
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\biletCategoria1.cpp(19,44): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\biletCategoria1.cpp(42,50): warning C4244: 'initializing': conversion from 'double' to 'size_t', possible loss of data
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\biletCategoria1.cpp(43,45): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\biletCategoria1.cpp(123,56): warning C4244: 'initializing': conversion from 'double' to 'size_t', possible loss of data
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\biletCategoria1.cpp(124,51): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\biletCategoria1.cpp(223,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\biletCategoria1.cpp(227,24): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+﻿  main.cpp
   proiectPOO.vcxproj -> C:\Users\thepr\Desktop\proiect POO\proiectPOO\x64\Debug\proiectPOO.exe

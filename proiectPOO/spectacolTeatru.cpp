@@ -2,7 +2,7 @@
 #include "spectacolTeatru.h"
 #include "biletCategoria1.h"
 #include "biletCategoria2.h"
-int spectacolTeatru::idSpectacol = 0;
+int spectacolTeatru::nrSpectacol = 0;
 spectacolTeatru::spectacolTeatru() : nrMaximLocuri(0)
 {
 	bileteCat1 = nullptr;
@@ -17,7 +17,7 @@ spectacolTeatru::spectacolTeatru() : nrMaximLocuri(0)
 	denumire = nullptr;
 	data = nullptr;
 	ora = nullptr;
-	idSpectacol++;
+	nrSpectacol++;
 }
 spectacolTeatru::spectacolTeatru(const int nrMaximLocuri) : nrMaximLocuri(nrMaximLocuri)
 {
@@ -36,7 +36,7 @@ spectacolTeatru::spectacolTeatru(const int nrMaximLocuri) : nrMaximLocuri(nrMaxi
 	strcpy_s(data, strlen("TBA") + 1, "TBA");
 	ora = new char[strlen("TBA") + 1];
 	strcpy_s(ora, strlen("TBA") + 1, "TBA");
-	idSpectacol++;
+	nrSpectacol++;
 }
 spectacolTeatru::spectacolTeatru(const char* denumire) : nrMaximLocuri(0)
 {
@@ -60,7 +60,7 @@ spectacolTeatru::spectacolTeatru(const char* denumire) : nrMaximLocuri(0)
 	}
 	else
 		this->denumire = nullptr;
-	idSpectacol++;
+	nrSpectacol++;
 }
 spectacolTeatru::spectacolTeatru(const char* denumire, const char* data): spectacolTeatru(denumire)
 {
@@ -444,7 +444,7 @@ spectacolTeatru::spectacolTeatru(const spectacolTeatru& st): nrMaximLocuri(st.nr
 		bileteLoja = nullptr;
 		this->nrRanduriLoja = this->nrBileteLoja = 0;
 	}
-	idSpectacol++;
+	nrSpectacol++;
 }
 spectacolTeatru& spectacolTeatru::operator=(const spectacolTeatru& st)
 {
@@ -618,7 +618,7 @@ spectacolTeatru& spectacolTeatru::operator=(const spectacolTeatru& st)
 	}
 	return *this;
 }
-std::ostream& operator<<(std::ostream& out, const spectacolTeatru& st)
+ostream& operator<<(ostream& out, spectacolTeatru st)
 {
 	out << "Spectacolul ";
 	if (st.denumire)
@@ -635,74 +635,187 @@ std::ostream& operator<<(std::ostream& out, const spectacolTeatru& st)
 		out << st.ora << ".";
 	else
 		out << " necunoscuta.";
-	out << "\n\nBilete categoria 1: " << std::endl<<std::endl;
+	out << "\n\nBilete categoria 1: " << endl<<endl;
 	if (st.bileteCat1 != nullptr)
 	{
 		for (int i = 0; i < st.nrRanduriCat1; i++)
 		{
 			for (int j = 0; j < st.nrBileteCat1; j++)
 				out << st.bileteCat1[i][j];
-			out << std::endl<<std::endl;
+			out << endl<<endl;
 		}
 	}
-	else out << "nu exista." << std::endl<<std::endl;
-	out << "\n\nBilete categoria 2: " << std::endl<<std::endl;
+	else out << "nu exista." << endl<<endl;
+	out << "\n\nBilete categoria 2: " << endl<<endl;
 	if (st.bileteCat2 != nullptr)
 	{
 		for (int i = 0; i < st.nrRanduriCat2; i++)
 		{
 			for (int j = 0; j < st.nrBileteCat2; j++)
 				out << st.bileteCat2[i][j];
-			out << std::endl<<std::endl;
+			out << endl<<endl;
 		}
 	}
-	else out << "nu exista." << std::endl<<std::endl;
-	out << "\n\nBilete loja: " << std::endl<<std::endl;
+	else out << "nu exista." << endl<<endl;
+	out << "\n\nBilete loja: " << endl<<endl;
 	if (st.bileteLoja != nullptr)
 	{
 		for (int i = 0; i < st.nrRanduriLoja; i++)
 		{
 			for (int j = 0; j < st.nrBileteLoja; j++)
 				out << st.bileteLoja[i][j];
-			out << std::endl<<std::endl;
+			out << endl<<endl;
 		}
 	}
-	else out << "nu exista." << std::endl<<std::endl;
+	else out << "nu exista." << endl<<endl;
 	return out;
 }
-std::istream& operator>>(std::istream& in, spectacolTeatru& st)
+istream& operator>>(istream& in, spectacolTeatru& st)
 {
 	char buffer[100];
-	std::cout << "Denumire spectacol: ";
+	cout << "Denumire spectacol: ";
 	in.getline(buffer,100);
 	if (st.denumire != nullptr)
 		delete[] st.denumire, st.denumire=nullptr;
 	st.denumire = new char[strlen(buffer) + 1];
 	strcpy_s(st.denumire, strlen(buffer) + 1, buffer);
-	std::cout << "Data spectacol: ";
+	cout << "Data spectacol (zz/ll/aaaa): ";
 	in.getline(buffer, 30);
+	bool is_ok = false;
+	if(strlen(buffer)==10)
+	{
+		int an, luna, zi; // folosim atoi()
+		bool bisect;
+		char* buf_aux;
+		buf_aux = new char[5];
+		strcpy_s(buf_aux, 5, buffer + 6);
+		if (atoi(buf_aux))
+		{
+			an = atoi(buf_aux);
+			if (an % 4 == 0)
+			{
+				if (an % 100 == 0)
+				{
+					if (an % 400 == 0)
+						bisect = true;
+					else bisect = false;
+				}
+				else bisect = true;
+			}
+			else bisect = false;
+			delete[] buf_aux;
+			buf_aux = new char[3];
+			strncpy_s(buf_aux, 3, buffer + 3, 2);
+			if (atoi(buf_aux))
+			{
+				luna = atoi(buf_aux);
+				if (luna >= 1 && luna <= 12)
+				{
+					delete[] buf_aux;
+					buf_aux = new char[3];
+					strncpy_s(buf_aux, 3, buffer, 2);
+					if (atoi(buf_aux))
+					{
+						zi = atoi(buf_aux);
+						if (luna == 1 || luna == 3 || luna == 5 || luna == 7 || luna == 8 || luna == 10 || luna == 12)
+							if (zi >= 1 && zi <= 31)
+								is_ok = true;
+						else if (luna == 4 || luna == 6 || luna == 9 || luna == 11)
+						{
+							if (zi >= 1 && zi <= 30)
+								is_ok = true;
+						}
+						else if (luna == 2)
+						{
+							if (bisect)
+							{
+								if (zi >= 1 && zi <= 29)
+									is_ok = true;
+							}
+							else
+							{
+								if (zi >= 1 && zi <= 28)
+									is_ok = true;
+							}
+						}
+					}
+				}
+			}
+			else
+			{
+				
+			}
+		}
+		else
+		{
+			cout << "Anul nu este valid!";
+			bool ok = false;
+			while (!ok)
+			{
+				cout << "Introduceti un an valid: ";
+				in.getline(buffer, 30);
+				strcpy_s(buf_aux, 5, buffer + 6);
+				if (atoi(buf_aux))
+				{
+					an = atoi(buf_aux);
+					if (an % 4 == 0)
+					{
+						if (an % 100 == 0)
+						{
+							if (an % 400 == 0)
+								bisect = true;
+							else bisect = false;
+						}
+						else bisect = true;
+					}
+					else bisect = false;
+					ok = true;
+				}
+				else cout << "Anul nu este valid!";
+			}
+		}
+	}
+	else 
+	{
+		cout << "Data nu este valida!";
+		bool ok = false;
+		while (!ok)
+		{
+			cout << "Introduceti o data valida (zz/ll/aaaa): ";
+			in.getline(buffer, 30);
+			if (strlen(buffer) == 10)
+			{
+				if (st.data != nullptr)
+					delete[] st.data, st.data = nullptr;
+				st.data = new char[strlen(buffer) + 1];
+				strcpy_s(st.data, strlen(buffer) + 1, buffer);
+				ok = true;
+			}
+			else cout << "Data nu este valida!";
+		}
+	}
 	if(st.data!=nullptr)
 		delete[] st.data, st.data = nullptr;
 	st.data = new char[strlen(buffer) + 1];
 	strcpy_s(st.data, strlen(buffer) + 1, buffer);
-	std::cout << "Ora spectacol: ";
+	cout << "Ora spectacol: ";
 	in.getline(buffer, 20);
 	if (st.ora != nullptr)
 		delete[] st.ora, st.ora = nullptr;
 	st.ora = new char[strlen(buffer) + 1];
 	strcpy_s(st.ora, strlen(buffer) + 1, buffer);
-	std::cout << "Locuri disponibile: " << st.nrMaximLocuri<<std::endl;
-	std::cout << "Nr. randuri Categoria 1: ";
+	cout << "Locuri disponibile: " << st.nrMaximLocuri<<endl;
+	cout << "Nr. randuri Categoria 1: ";
 	in >> st.nrRanduriCat1;
-	std::cout << "Nr. bilete pe rand Categoria 1: ";
+	cout << "Nr. bilete pe rand Categoria 1: ";
 	in >> st.nrBileteCat1;
-	std::cout << "Nr. randuri Categoria 2: ";
+	cout << "Nr. randuri Categoria 2: ";
 	in >> st.nrRanduriCat2;
-	std::cout << "Nr. bilete pe rand Categoria 2: ";
+	cout << "Nr. bilete pe rand Categoria 2: ";
 	in >> st.nrBileteCat2;
-	std::cout << "Nr. randuri Loja: ";
+	cout << "Nr. randuri Loja: ";
 	in >> st.nrRanduriLoja;
-	std::cout << "Nr. bilete pe rand Loja: ";
+	cout << "Nr. bilete pe rand Loja: ";
 	in >> st.nrBileteLoja;
 	if (st.nrRanduriCat1 > 0 && st.nrBileteCat1 > 0)
 	{
@@ -714,7 +827,7 @@ std::istream& operator>>(std::istream& in, spectacolTeatru& st)
 			for (int i = 0; i < st.nrRanduriCat1; i++)
 				for (int j = 0; j < st.nrBileteCat1; j++)
 				{
-					std::cout << "Bilet categoria 1, rand "<< i+1<<",loc "<<j+1<<":\n";
+					cout << "Bilet categoria 1, rand "<< i+1<<", loc "<<j+1<<":\n";
 					in >> st.bileteCat1[i][j];
 				}
 		}
@@ -739,7 +852,7 @@ std::istream& operator>>(std::istream& in, spectacolTeatru& st)
 				for (int i = 0; i < st.nrRanduriCat2; i++)
 					for (int j = 0; j < st.nrBileteCat2; j++)
 					{
-						std::cout << "Bilet categoria 2, rand " << i + 1 << ",loc " << j + 1 << ":\n";
+						cout << "Bilet categoria 2, rand " << i + 1 << ", loc " << j + 1 << ":\n";
 						in >> st.bileteCat2[i][j];
 					}
 			}
@@ -765,7 +878,7 @@ std::istream& operator>>(std::istream& in, spectacolTeatru& st)
 				for (int i = 0; i < st.nrRanduriLoja; i++)
 					for (int j = 0; j < st.nrBileteLoja; j++)
 					{
-						std::cout << "Bilet loja, rand " << i + 1 << ",loc " << j + 1 << ":\n";
+						cout << "Bilet loja, rand " << i + 1 << ", loc " << j + 1 << ":\n";
 						in >> st.bileteLoja[i][j];
 					}
 			}
@@ -1102,26 +1215,26 @@ void spectacolTeatru::setBileteLoja(int nrRanduriLoja, int nrBileteLoja, biletLo
 				bileteLoja[i][j] = s[i][j];
 	}
 }
-void spectacolTeatru::setIdSpectacol(const int i)
+void spectacolTeatru::setnrSpectacol(const int i)
 {
-	idSpectacol = i;
+	nrSpectacol = i;
 }
 int* spectacolTeatru::rezervaBiletCat1(int rand, int loc)
 {
 	if (rand >= 0 && rand < nrRanduriCat1 && loc >= 0 && loc < nrBileteCat1)
-		std::cin >> bileteCat1[rand][loc];
+		cin >> bileteCat1[rand][loc];
 	return bileteCat1[rand][loc].getUID();
 }
 int* spectacolTeatru::rezervaBiletCat2(int rand, int loc)
 {
 	if (rand >= 0 && rand < nrRanduriCat2 && loc >= 0 && loc < nrBileteCat2)
-		std::cin >> bileteCat2[rand][loc];
+		cin >> bileteCat2[rand][loc];
 	return bileteCat2[rand][loc].getUID();
 }
 int* spectacolTeatru::rezervaBiletLoja(int rand, int loc)
 {
 	if (rand >= 0 && rand < nrRanduriLoja && loc >= 0 && loc < nrBileteLoja)
-		std::cin >> bileteLoja[rand][loc];
+		cin >> bileteLoja[rand][loc];
 	return bileteLoja[rand][loc].getUID();
 }
 int spectacolTeatru::maximdimUIDCat1()

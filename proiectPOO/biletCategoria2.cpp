@@ -1,33 +1,17 @@
-#include <iostream>
 #include "biletCategoria2.h"
+int biletCategoria2::id = 0;
 biletCategoria2::biletCategoria2()
 {
-	id = 0;
+	id++;
 	numeSpectator = new char[strlen("O persoana") + 1];
 	strcpy_s(numeSpectator, strlen("O persoana") + 1, "O persoana");
-	UID = new int[log10(1) + 1 + strlen(numeSpectator)];
-	dimUID = log10(1) + strlen(numeSpectator) + 1;
+	UID = new int[log10(id) + 1 + strlen(numeSpectator)];
+	dimUID = log10(id) + strlen(numeSpectator) + 1;
 	UID[0] = 0;
 	for (int i = 1; i < dimUID; i++)
 		UID[i] = numeSpectator[i - 1];
 }
-biletCategoria2::biletCategoria2(int id) : biletCategoria2()
-{
-	if (id > 0)
-		this->id = id;
-	UID = new int[log10(id) + strlen(numeSpectator) + 1];
-	dimUID = log10(id) + strlen(numeSpectator) + 1;
-	int i = 0;
-	while (id)
-	{
-		UID[i] = id % 10;
-		id = id / 10;
-		i++;
-	}
-	for (int j = i; j < dimUID; j++)
-		UID[j] = numeSpectator[j - i];
-}
-biletCategoria2::biletCategoria2(int id, const char* numeSpectator) : biletCategoria2(id)
+biletCategoria2::biletCategoria2(const char* numeSpectator) : biletCategoria2()
 {
 	if (numeSpectator != nullptr)
 	{
@@ -42,19 +26,17 @@ biletCategoria2::biletCategoria2(int id, const char* numeSpectator) : biletCateg
 	UID = new int[log10(id) + strlen(numeSpectator) + 1];
 	dimUID = log10(id) + strlen(numeSpectator) + 1;
 	int i = 0;
-	while (id)
+	int copie = id;
+	while (copie)
 	{
-		UID[i] = id % 10;
-		id = id / 10;
+		UID[i] = copie % 10;
+		copie /= 10;
 		i++;
 	}
 	for (int j = i; j < dimUID; j++)
 		UID[j] = numeSpectator[j - i];
 }
-biletCategoria2::biletCategoria2(const char* numeSpectator, int id) : biletCategoria2(id, numeSpectator)
-{
-}
-biletCategoria2::biletCategoria2(const biletCategoria2& b) : biletCategoria2(b.id, b.numeSpectator)
+biletCategoria2::biletCategoria2(const biletCategoria2& b) : biletCategoria2(b.numeSpectator)
 {
 	
 }
@@ -89,24 +71,21 @@ biletCategoria2& biletCategoria2::operator=(const biletCategoria2& b)
 	}
 	return *this;
 }
-std::ostream& operator<<(std::ostream& out, const biletCategoria2& b)
+ostream& operator<<(ostream& out, biletCategoria2 b)
 {
-	out << "Id: " << b.id << std::endl;
-	out << "Nume spectator: " << b.numeSpectator << std::endl;
+	out << "Nume spectator: " << b.numeSpectator << endl;
 	out << "UID: ";
 	for (int i = 0; i < b.dimUID; i++)
 		out << b.UID[i];
-	out << std::endl<<std::endl;
+	out << endl<<endl;
 	return out;
 }
-std::istream& operator>>(std::istream& in, biletCategoria2& b)
+istream& operator>>(istream& in, biletCategoria2& b)
 {
-	std::cout << "Id: ";
-	in >> b.id;
-	in.get();
 	std::cout << "Nume spectator: ";
 	char buffer[50];
 	in.getline(buffer, 50);
+	in.ignore();
 	if (b.numeSpectator != nullptr)
 		delete[] b.numeSpectator, b.numeSpectator = nullptr;
 	b.numeSpectator = new char[strlen(buffer) + 1];
@@ -185,17 +164,49 @@ bool biletCategoria2::checkUID(char* check)
 {
 	if (check != nullptr)
 	{
-		if (strlen(check) == dimUID)
+		int dimUIDchar = 0;
+		for (int i = 0; i < dimUID; i++)
 		{
-			for (int i = 0; i < dimUID; i++)
-				if (check[i] != UID[i])
-					return false;
-			return true;
+			int copie = UID[i];
+			if (copie == 0)
+				dimUIDchar++;
+			else while (copie)
+			{
+				dimUIDchar++;
+				copie /= 10;
+			}
 		}
+		if (dimUIDchar != strlen(check))
+			return false;
+		char* UIDchar = new char[dimUIDchar + 1];
+		int i = 0;
+		for (int j = 0; j < dimUID; j++)
+		{
+			int copie = UID[j];
+			if (copie == 0)
+			{
+				UIDchar[i] = '0';
+				i++;
+			}
+			else
+			{
+				while (copie)
+				{
+					int aux = i + log10(copie);
+					UIDchar[aux] = copie % 10 + '0';
+					copie /= 10;
+				}
+				i += log10(UID[j]) + 1;
+			}
+		}
+		UIDchar[dimUIDchar] = '\0';
+		if (!strcmp(UIDchar, check))
+			return true;
+		return false;
 	}
 	return false;
 }
-void biletCategoria2::setId(int id)
+void biletCategoria2::setId(const int id)
 {
 	if (id > 0)
 		this->id = id;

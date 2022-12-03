@@ -1,7 +1,9 @@
 #pragma once
+#include <iostream>
 #include "biletCategoria1.h"
 #include "biletCategoria2.h"
 #include "biletLoja.h"
+using namespace std;
 class spectacolTeatru
 {
 private:
@@ -18,8 +20,8 @@ private:
 	biletLoja** bileteLoja;
 	int nrRanduriLoja;
 	int nrBileteLoja;
+	static int nrSpectacol;
 public:
-	static int idSpectacol;
 	spectacolTeatru();
 	spectacolTeatru(const int); 
 	spectacolTeatru(const char*); 
@@ -42,8 +44,8 @@ public:
 	spectacolTeatru(const int, const char*, const char*, const char*, const int, const int, const int, const int, const int, const int);
 	spectacolTeatru(const spectacolTeatru&);
 	spectacolTeatru& operator=(const spectacolTeatru&);
-	friend std::ostream& operator<<(std::ostream&, const spectacolTeatru&);
-	friend std::istream& operator>>(std::istream&, spectacolTeatru&);
+	friend ostream& operator<<(ostream&, spectacolTeatru);
+	friend istream& operator>>(istream&, spectacolTeatru&);
 	operator int();
 	bool operator!();
 	~spectacolTeatru();
@@ -78,7 +80,7 @@ public:
 	void setBileteCat1(int, int, biletCategoria1**);
 	void setBileteCat2(int, int, biletCategoria2**);
 	void setBileteLoja(int, int, biletLoja**);
-	static void setIdSpectacol(const int);
+	static void setnrSpectacol(const int);
 	int* rezervaBiletCat1(int, int);
 	int* rezervaBiletCat2(int, int); 
 	int* rezervaBiletLoja(int, int);
