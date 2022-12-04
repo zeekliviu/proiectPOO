@@ -1,0 +1,8 @@
+﻿  spectacolTeatru.cpp
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(739): warning C4715: 'spectacolTeatru::getDenumire': not all control paths return a value
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(757): warning C4715: 'spectacolTeatru::getOra': not all control paths return a value
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(748): warning C4715: 'spectacolTeatru::getData': not all control paths return a value
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(915): warning C4715: 'spectacolTeatru::getBiletCat2': not all control paths return a value
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(920): warning C4715: 'spectacolTeatru::getBiletLoja': not all control paths return a value
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(910): warning C4715: 'spectacolTeatru::getBiletCat1': not all control paths return a value
+  proiectPOO.vcxproj -> C:\Users\thepr\Desktop\proiect POO\proiectPOO\Debug\proiectPOO.exe

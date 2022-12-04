@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <string>
 #include "biletCategoria1.h"
 #include "biletCategoria2.h"
 #include "biletLoja.h"
@@ -32,18 +33,18 @@ public:
 	spectacolTeatru(const int, const char*); 
 	spectacolTeatru(const int, const char*, const char*); 
 	spectacolTeatru(const int, const char*, const char*, const char*); 
-	spectacolTeatru(const int, const char*, const int); 
-	spectacolTeatru(const int, const char*, const char*, const int);
-	spectacolTeatru(const int, const char*, const char*, const char*, const int);
-	spectacolTeatru(const int, const char*, const int, const int); 
-	spectacolTeatru(const int, const char*, const char*, const int, const int);
-	spectacolTeatru(const int, const char*, const char*, const char*, const int, const int); 
-	spectacolTeatru(const int, const char*, const int, const int, const int, const int); 
-	spectacolTeatru(const int, const char*, const char*, const int, const int, const int, const int); 
-	spectacolTeatru(const int, const char*, const char*, const char*, const int, const int, const int, const int); 
-	spectacolTeatru(const int, const char*, const int, const int, const int, const int, const int, const int);
-	spectacolTeatru(const int, const char*, const char*, const int, const int, const int, const int, const int, const int);
-	spectacolTeatru(const int, const char*, const char*, const char*, const int, const int, const int, const int, const int, const int);
+	spectacolTeatru(const int, const char*, int); 
+	spectacolTeatru(const int, const char*, const char*, int);
+	spectacolTeatru(const int, const char*, const char*, const char*, int);
+	spectacolTeatru(const int, const char*, int, int); 
+	spectacolTeatru(const int, const char*, const char*, int, int);
+	spectacolTeatru(const int, const char*, const char*, const char*, int, int); 
+	spectacolTeatru(const int, const char*, int, int, int, int); 
+	spectacolTeatru(const int, const char*, const char*, int, int, int, int); 
+	spectacolTeatru(const int, const char*, const char*, const char*, int, int, int, int); 
+	spectacolTeatru(const int, const char*, int, int, int, int, int, int);
+	spectacolTeatru(const int, const char*, const char*, int, int, int, int, int, int);
+	spectacolTeatru(const int, const char*, const char*, const char*, int, int, int, int, int, int);
 	spectacolTeatru(const spectacolTeatru&);
 	spectacolTeatru& operator=(const spectacolTeatru&);
 	friend ostream& operator<<(ostream&, spectacolTeatru);
@@ -82,7 +83,7 @@ public:
 	void setBileteCat1(int, int, biletCategoria1**);
 	void setBileteCat2(int, int, biletCategoria2**);
 	void setBileteLoja(int, int, biletLoja**);
-	static void setnrSpectacol(const int);
+	static void setnrSpectacol(int);
 	int* rezervaBiletCat1(int, int);
 	int* rezervaBiletCat2(int, int); 
 	int* rezervaBiletLoja(int, int);

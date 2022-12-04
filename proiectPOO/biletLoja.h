@@ -1,10 +1,12 @@
 #pragma once
 #include <iostream>
+#include <string>
 using namespace std;
 class biletLoja
 {
 private:
-	static int id;
+	static int nrBilete;
+	int id;
 	bool ocupat;
 	char* numeSpectator;
 	int* UID;
@@ -24,6 +26,6 @@ public:
 	int* getUID();
 	int getdimUID();
 	bool checkUID(char*);
-	void setId(const int);
+	void setOccupancy(bool);
 	void setNumeSpectator(const char*);
 };

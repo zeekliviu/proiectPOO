@@ -4,7 +4,6 @@
 using namespace std;
 int main()
 {
-
 	/*
 	data d;
 	for (int an = 2019; an <= 2020; an++)
@@ -145,8 +144,11 @@ int main()
 		else if (optiune == 2)
 		{
 			if(nrCrt)
+			{
+				cout << "================================ LISTA SPECTACOLE ================================\n\n";
 				for (int i = 0; i < nrCrt; i++)
 					cout << spectacole[i];
+			}
 			else
 				cout << "Nu exista spectacole inregistrate in sistem!\n";
 		}

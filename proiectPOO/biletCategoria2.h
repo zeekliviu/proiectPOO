@@ -1,10 +1,12 @@
 #pragma once
 #include <iostream>
+#include <string>
 using namespace std;
 class biletCategoria2
 {
 private:
-	static int id;
+	static int nrBilete;
+	int id;
 	bool ocupat;
 	char* numeSpectator;
 	int* UID;
@@ -16,15 +18,15 @@ public:
 	biletCategoria2& operator=(const biletCategoria2&);
 	friend ostream& operator<<(ostream&, biletCategoria2);
 	friend istream& operator>>(istream&, biletCategoria2&);
-	int operator[](int);
-	biletCategoria2 operator++();
-	biletCategoria2 operator++(int);
+	char operator[](int);
+	biletCategoria2& operator++();
+	biletCategoria2& operator++(int);
 	~biletCategoria2();
 	bool getOccupancy();
 	char* getNumeSpectator();
 	int* getUID();
 	int getdimUID();
 	bool checkUID(char*);
-	void setId(const int);
+	void setOccupancy(bool);
 	void setNumeSpectator(const char*);
 };
