@@ -5,6 +5,7 @@ class biletCategoria2
 {
 private:
 	static int id;
+	bool ocupat;
 	char* numeSpectator;
 	int* UID;
 	int dimUID;
@@ -19,7 +20,7 @@ public:
 	biletCategoria2 operator++();
 	biletCategoria2 operator++(int);
 	~biletCategoria2();
-	int getId();
+	bool getOccupancy();
 	char* getNumeSpectator();
 	int* getUID();
 	int getdimUID();

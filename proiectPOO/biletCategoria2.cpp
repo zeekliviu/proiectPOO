@@ -5,6 +5,7 @@ biletCategoria2::biletCategoria2()
 	id++;
 	numeSpectator = new char[strlen("O persoana") + 1];
 	strcpy_s(numeSpectator, strlen("O persoana") + 1, "O persoana");
+	ocupat = false;
 	UID = new int[log10(id) + 1 + strlen(numeSpectator)];
 	dimUID = log10(id) + strlen(numeSpectator) + 1;
 	UID[0] = 0;
@@ -17,6 +18,7 @@ biletCategoria2::biletCategoria2(const char* numeSpectator) : biletCategoria2()
 	{
 		this->numeSpectator = new char[strlen(numeSpectator) + 1];
 		strcpy_s(this->numeSpectator, strlen(numeSpectator) + 1, numeSpectator);
+		ocupat = true;
 	}
 	else
 	{
@@ -36,14 +38,37 @@ biletCategoria2::biletCategoria2(const char* numeSpectator) : biletCategoria2()
 	for (int j = i; j < dimUID; j++)
 		UID[j] = numeSpectator[j - i];
 }
-biletCategoria2::biletCategoria2(const biletCategoria2& b) : biletCategoria2(b.numeSpectator)
+biletCategoria2::biletCategoria2(const biletCategoria2& b)
 {
-	
+	id++;
+	ocupat = b.ocupat;
+	if (b.numeSpectator != nullptr)
+	{
+		this->numeSpectator = new char[strlen(b.numeSpectator) + 1];
+		strcpy_s(this->numeSpectator, strlen(b.numeSpectator) + 1, b.numeSpectator);
+		ocupat = true;
+	}
+	else
+	{
+		this->numeSpectator = new char[strlen("O persoana") + 1];
+		strcpy_s(this->numeSpectator, strlen("O persoana") + 1, "O persoana");
+		ocupat = false;
+	}
+	if (b.UID != nullptr)
+	{
+		if(this->UID!=nullptr)
+			delete[] this->UID, this->UID = nullptr;
+		this->UID = new int[b.dimUID];
+		this->dimUID = b.dimUID;
+		for (int i = 0; i < b.dimUID; i++)
+			this->UID[i] = b.UID[i];
+	}
 }
 biletCategoria2& biletCategoria2::operator=(const biletCategoria2& b)
 {
 	if (this != &b)
 	{
+		ocupat = b.ocupat;
 		if (b.numeSpectator != nullptr)
 		{
 			if (this->numeSpectator)
@@ -137,9 +162,9 @@ biletCategoria2::~biletCategoria2()
 	if (UID)
 		delete[] UID, UID = nullptr;
 }
-int biletCategoria2::getId()
+bool biletCategoria2::getOccupancy()
 {
-	return id;
+	return ocupat;
 }
 char* biletCategoria2::getNumeSpectator()
 {

@@ -281,6 +281,13 @@ spectacolTeatru::spectacolTeatru(const spectacolTeatru& st): nrMaximLocuri(st.nr
 		this->denumire = new char[strlen(st.denumire) + 1];
 		strcpy_s(this->denumire, strlen(st.denumire) + 1, st.denumire);
 	}
+	else
+	{
+		if (this->denumire != nullptr)
+			delete[] this->denumire, this->denumire = nullptr;
+		denumire = new char[strlen("TBA") + 1];
+		strcpy_s(denumire, strlen("TBA") + 1, "TBA");
+	}
 	if (st.data != nullptr && strlen(st.data) > 0)
 	{
 		if (this->data != nullptr)
@@ -288,12 +295,26 @@ spectacolTeatru::spectacolTeatru(const spectacolTeatru& st): nrMaximLocuri(st.nr
 		this->data = new char[strlen(st.data) + 1];
 		strcpy_s(this->data, strlen(st.data) + 1, st.data);
 	}
+	else
+	{
+		if (this->data != nullptr)
+			delete[] this->data, this->data = nullptr;
+		data = new char[strlen("TBA") + 1];
+		strcpy_s(data, strlen("TBA") + 1, "TBA");
+	}
 	if (st.ora != nullptr && strlen(st.ora) > 0)
 	{
 		if (this->ora != nullptr)
 			delete[] this->ora, this->ora = nullptr;
 		this->ora = new char[strlen(st.ora) + 1];
 		strcpy_s(this->ora, strlen(st.ora) + 1, st.ora);
+	}
+	else
+	{
+		if (this->ora != nullptr)
+			delete[] this->ora, this->ora = nullptr;
+		ora = new char[strlen("TBA") + 1];
+		strcpy_s(ora, strlen("TBA") + 1, "TBA");
 	}
 	if (st.nrRanduriCat1 > 0 && st.nrBileteCat1 > 0)
 	{
@@ -931,6 +952,7 @@ spectacolTeatru::~spectacolTeatru()
 		delete[] data, data = nullptr;
 	if (ora != nullptr)
 		delete[] ora, ora = nullptr;
+	nrSpectacol--;
 }
 char* spectacolTeatru::getDenumire()
 {
@@ -969,7 +991,7 @@ int spectacolTeatru::getNrLocuriDisponibileCat1()
 	if (bileteCat1 != nullptr)
 		for (int i = 0; i < nrRanduriCat1; i++)
 			for (int j = 0; j < nrBileteCat1; j++)
-				if (bileteCat1[i][j].getId() == 0)
+				if (bileteCat1[i][j].getOccupancy() == false)
 					nrLocuri++;
 	return nrLocuri;
 }
@@ -979,7 +1001,7 @@ int spectacolTeatru::getNrLocuriDisponibileCat2()
 	if (bileteCat2 != nullptr)
 		for (int i = 0; i < nrRanduriCat2; i++)
 			for (int j = 0; j < nrBileteCat2; j++)
-				if (bileteCat2[i][j].getId() == 0)
+				if (bileteCat2[i][j].getOccupancy() == false)
 					nrLocuri++;
 	return nrLocuri;
 }
@@ -989,7 +1011,7 @@ int spectacolTeatru::getNrLocuriDisponibileLoja()
 	if (bileteLoja != nullptr)
 		for (int i = 0; i < nrRanduriLoja; i++)
 			for (int j = 0; j < nrBileteLoja; j++)
-				if (bileteLoja[i][j].getId() == 0)
+				if (bileteLoja[i][j].getOccupancy() == false)
 					nrLocuri++;
 	return nrLocuri;
 }
@@ -999,7 +1021,7 @@ int spectacolTeatru::getNrLocuriOcupateCat1()
 	if (bileteCat1 != nullptr)
 		for (int i = 0; i < nrRanduriCat1; i++)
 			for (int j = 0; j < nrBileteCat1; j++)
-				if (bileteCat1[i][j].getId() != 0)
+				if (bileteCat1[i][j].getOccupancy() != false)
 					nrLocuri++;
 	return nrLocuri;
 }
@@ -1009,7 +1031,7 @@ int spectacolTeatru::getNrLocuriOcupateCat2()
 	if (bileteCat2 != nullptr)
 		for (int i = 0; i < nrRanduriCat2; i++)
 			for (int j = 0; j < nrBileteCat2; j++)
-				if (bileteCat2[i][j].getId() != 0)
+				if (bileteCat2[i][j].getOccupancy() != false)
 					nrLocuri++;
 	return nrLocuri;
 }
@@ -1019,7 +1041,7 @@ int spectacolTeatru::getNrLocuriOcupateLoja()
 	if (bileteLoja != nullptr)
 		for (int i = 0; i < nrRanduriLoja; i++)
 			for (int j = 0; j < nrBileteLoja; j++)
-				if (bileteLoja[i][j].getId() != 0)
+				if (bileteLoja[i][j].getOccupancy() != false)
 					nrLocuri++;
 	return nrLocuri;
 }

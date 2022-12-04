@@ -5,6 +5,7 @@ class biletLoja
 {
 private:
 	static int id;
+	bool ocupat;
 	char* numeSpectator;
 	int* UID;
 	int dimUID;
@@ -18,7 +19,7 @@ public:
 	bool operator>(const biletLoja&);
 	bool operator>=(const biletLoja&);
 	~biletLoja();
-	int getId();
+	bool getOccupancy();
 	char* getNumeSpectator();
 	int* getUID();
 	int getdimUID();

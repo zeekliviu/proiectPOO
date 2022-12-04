@@ -105,9 +105,9 @@ int main()
 		*/
 
 
-spectacolTeatru s;
-cout << s;
-	/*
+//spectacolTeatru s(10);
+//cout << s;
+	
 	cout << "Bun venit la The Ticketing App !\n";
 	cout << "Autor: Liviu-Ioan Zecheru\n";
 	cout << "Seria E, Grupa 1061\n";
@@ -217,7 +217,7 @@ cout << s;
 						{
 							cout << endl << "Rand " << i + 1 << " ";
 							for (int j = 0; j < spectacole[alegereSpectacol].getNrBileteCat1(); j++)
-								if (spectacole[alegereSpectacol].getBileteCat1()[i][j].getId() != 0)
+								if (spectacole[alegereSpectacol].getBileteCat1()[i][j].getOccupancy() != 0)
 									cout << "|_" << char(1) << "_|";
 								else cout << "|___|";
 							cout << endl << "\t ";
@@ -245,7 +245,7 @@ cout << s;
 								cout << "Loc incorect! Introdu alt loc: ";
 								cin >> loc;
 							}
-							if (spectacole[alegereSpectacol].getBileteCat1()[rand - 1][loc - 1].getId() == 0)
+							if (spectacole[alegereSpectacol].getBileteCat1()[rand - 1][loc - 1].getOccupancy() == 0)
 							{
 								int* UID = spectacole[alegereSpectacol].rezervaBiletCat1(rand - 1, loc - 1);
 								int dimUID = spectacole[alegereSpectacol].getBiletCat1(rand - 1, loc - 1).getdimUID();
@@ -270,7 +270,7 @@ cout << s;
 						{
 							cout << endl << "Rand " << i + 1 << " ";
 							for (int j = 0; j < spectacole[alegereSpectacol].getNrBileteCat2(); j++)
-								if (spectacole[alegereSpectacol].getBileteCat2()[i][j].getId() != 0)
+								if (spectacole[alegereSpectacol].getBileteCat2()[i][j].getOccupancy() != 0)
 									cout << "|_" << char(1) << "_|";
 								else
 									cout << "|___|";
@@ -299,7 +299,7 @@ cout << s;
 								cout << "Loc incorect! Introdu alt loc: ";
 								cin >> loc;
 							}
-							if (spectacole[alegereSpectacol].getBileteCat2()[rand - 1][loc - 1].getId() == 0)
+							if (spectacole[alegereSpectacol].getBileteCat2()[rand - 1][loc - 1].getOccupancy() == 0)
 							{
 								int* UID = spectacole[alegereSpectacol].rezervaBiletCat2(rand - 1, loc - 1);
 								int dimUID = spectacole[alegereSpectacol].getBiletCat2(rand - 1, loc - 1).getdimUID();
@@ -323,7 +323,7 @@ cout << s;
 						{
 							cout << "\nRand " << i + 1 << " ";
 							for (int j = 0; j < spectacole[alegereSpectacol].getNrBileteLoja(); j++)
-								if (spectacole[alegereSpectacol].getBileteCat2()[i][j].getId() != 0)
+								if (spectacole[alegereSpectacol].getBileteCat2()[i][j].getOccupancy() != 0)
 									cout << "|_" << char(1) << "_|";
 								else
 									cout << "|___|";
@@ -352,7 +352,7 @@ cout << s;
 								cout << "Loc incorect! Introdu alt loc: ";
 								cin >> loc;
 							}
-							if (spectacole[alegereSpectacol].getBileteLoja()[rand - 1][loc - 1].getId() == 0)
+							if (spectacole[alegereSpectacol].getBileteLoja()[rand - 1][loc - 1].getOccupancy() == 0)
 							{
 								int* UID = spectacole[alegereSpectacol].rezervaBiletLoja(rand - 1, loc - 1);
 								int dimUID = spectacole[alegereSpectacol].getBiletLoja(rand - 1, loc - 1).getdimUID();
@@ -398,17 +398,17 @@ cout << s;
 				if (spectacole[alegereSpectacol].getBileteCat1() != nullptr)
 					for (int i = 0; i < spectacole[alegereSpectacol].getNrRanduriCat1(); i++)
 						for (int j = 0; j < spectacole[alegereSpectacol].getNrBileteCat1(); j++)
-							if (spectacole[alegereSpectacol].getBileteCat1()[i][j].getId() != 0)
+							if (spectacole[alegereSpectacol].getBileteCat1()[i][j].getOccupancy() != 0)
 								total++;
 				if (spectacole[alegereSpectacol].getBileteCat2() != nullptr)
 					for (int i = 0; i < spectacole[alegereSpectacol].getNrRanduriCat2(); i++)
 						for (int j = 0; j < spectacole[alegereSpectacol].getNrBileteCat2(); j++)
-							if (spectacole[alegereSpectacol].getBileteCat2()[i][j].getId() != 0)
+							if (spectacole[alegereSpectacol].getBileteCat2()[i][j].getOccupancy() != 0)
 								total++;
 				if (spectacole[alegereSpectacol].getBileteLoja() != nullptr)
 					for (int i = 0; i < spectacole[alegereSpectacol].getNrRanduriLoja(); i++)
 						for (int j = 0; j < spectacole[alegereSpectacol].getNrBileteLoja(); j++)
-							if (spectacole[alegereSpectacol].getBileteLoja()[i][j].getId() != 0)
+							if (spectacole[alegereSpectacol].getBileteLoja()[i][j].getOccupancy() != 0)
 								total++;
 				if (total != 0)
 					cout << "Sunt " << total << " bilete rezervate la spectacolul " << spectacole[alegereSpectacol].getDenumire() << " - " << spectacole[alegereSpectacol].getData() << " - " << spectacole[alegereSpectacol].getOra() << endl;
@@ -598,6 +598,6 @@ cout << s;
 			cout << "\nMultumim ca ati apelat la serviciile noastre de ticketing!\nMade with <3 by Zeek Liviu\nv1.0\nI won't lie, it was so !fun to make this project, especially when the _CrtIsValidHeapPointer (block) comes into place. " << char(1)<<'\n';
 		}
 		else cout << "\nOptiunea aleasa nu exista, te rog sa introduci alta optiune.\n\n";
-	}while (optiune != 9);*/
+	}while (optiune != 9);
 	return 0;
 }

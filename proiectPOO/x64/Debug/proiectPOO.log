@@ -1,11 +1,8 @@
-﻿  main.cpp
-  spectacolTeatru.cpp
-  timp.cpp
-  Generating Code...
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(943): warning C4715: 'spectacolTeatru::getDenumire': not all control paths return a value
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(952): warning C4715: 'spectacolTeatru::getData': not all control paths return a value
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(961): warning C4715: 'spectacolTeatru::getOra': not all control paths return a value
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(1124): warning C4715: 'spectacolTeatru::getBiletLoja': not all control paths return a value
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(1114): warning C4715: 'spectacolTeatru::getBiletCat1': not all control paths return a value
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(1119): warning C4715: 'spectacolTeatru::getBiletCat2': not all control paths return a value
+﻿  spectacolTeatru.cpp
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(965): warning C4715: 'spectacolTeatru::getDenumire': not all control paths return a value
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(974): warning C4715: 'spectacolTeatru::getData': not all control paths return a value
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(983): warning C4715: 'spectacolTeatru::getOra': not all control paths return a value
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(1141): warning C4715: 'spectacolTeatru::getBiletCat2': not all control paths return a value
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(1146): warning C4715: 'spectacolTeatru::getBiletLoja': not all control paths return a value
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(1136): warning C4715: 'spectacolTeatru::getBiletCat1': not all control paths return a value
   proiectPOO.vcxproj -> C:\Users\thepr\Desktop\proiect POO\proiectPOO\x64\Debug\proiectPOO.exe
