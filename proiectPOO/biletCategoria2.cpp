@@ -44,7 +44,6 @@ biletCategoria2& biletCategoria2::operator=(const biletCategoria2& b)
 {
 	if (this != &b)
 	{
-		this->id = b.id;
 		if (b.numeSpectator != nullptr)
 		{
 			if (this->numeSpectator)
@@ -73,19 +72,26 @@ biletCategoria2& biletCategoria2::operator=(const biletCategoria2& b)
 }
 ostream& operator<<(ostream& out, biletCategoria2 b)
 {
-	out << "Nume spectator: " << b.numeSpectator << endl;
-	out << "UID: ";
-	for (int i = 0; i < b.dimUID; i++)
-		out << b.UID[i];
-	out << endl<<endl;
+	if (b.numeSpectator)
+		out << "Nume spectator: " << b.numeSpectator << endl;
+	else
+		out << "Nume spectator: O persoana" << endl;
+	if (b.UID)
+	{
+		out << "UID: ";
+		for (int i = 0; i < b.dimUID; i++)
+			out << b.UID[i];
+	}
+	else
+		out << "UID: 0";
+	out << endl << endl;
 	return out;
 }
 istream& operator>>(istream& in, biletCategoria2& b)
 {
-	std::cout << "Nume spectator: ";
+	cout << "Nume spectator: ";
 	char buffer[50];
 	in.getline(buffer, 50);
-	in.ignore();
 	if (b.numeSpectator != nullptr)
 		delete[] b.numeSpectator, b.numeSpectator = nullptr;
 	b.numeSpectator = new char[strlen(buffer) + 1];

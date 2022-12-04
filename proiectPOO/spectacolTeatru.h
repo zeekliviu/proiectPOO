@@ -3,6 +3,8 @@
 #include "biletCategoria1.h"
 #include "biletCategoria2.h"
 #include "biletLoja.h"
+#include "data.h"
+#include "timp.h"
 using namespace std;
 class spectacolTeatru
 {

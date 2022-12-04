@@ -1,149 +1,152 @@
 #include <iostream>
-#include <ctime>
-using namespace std;
-#pragma warning (disable:4996)
 #include "spectacolTeatru.h"
+#include <fstream>
+using namespace std;
 int main()
 {
-	class data
-	{
-	public:
-		int zi, luna, an;
-	public:
-		data()
-		{
-			zi = 0;
-			luna = 0;
-			an = 0;
-		}
-		data(const char* str): data()
-		{}
-		data(char c) : data()
-		{}
-		data(int zi): data()
-		{
-			if (zi > 0 && zi < 32)
-				this->zi = zi;
-			else this->zi = 0;
-		}
-		data(int zi, const char* str): data(zi)
-		{}
-		data(int zi, const char* str1, const char* str2) : data(zi)
-		{}
-		data(int zi, char c): data(zi)
-		{}
-		data(int zi, char c, char cx): data(zi)
-		{}
-		data(int zi, int luna): data(zi)
-		{
-			if (luna > 0 && luna < 13)
-				this->luna = luna;
-			else this->luna = 0;
-			if(luna==2)
-			{
-				if (zi > 0 && zi < 29)
-					this->zi = zi;
-				else this->zi = 0;
-			}
-			else if (luna == 1 || luna == 3 || luna == 5 || luna == 7 || luna == 8 || luna == 10 || luna == 12)
-			{
-				if (zi > 0 && zi < 32)
-					this->zi = zi;
-				else this->zi = 0;
-			}
-			else if (luna == 4 || luna == 6 || luna == 9 || luna == 11)
-			{
-				if (zi > 0 && zi < 31)
-					this->zi = zi;
-				else this->zi = 0;
-			}
-		}
-		data(int zi, int luna, int an): data(zi, luna)
-		{
-			bool bisect;
-			if (an > 0)
-			{
-				if (an % 4 == 0)
-				{
-					if (an % 100 == 0)
-					{
-						if (an % 400 == 0)
-							bisect = true;
-						else bisect = false;
-					}
-					else bisect = true;
-				}
-				else bisect = false;
-				this->an = an;
-			}
-			else
-				bisect = false;
-			if (luna == 2)
-				if (bisect)
-				{
-					if (zi > 0 && zi < 30)
-						this->zi = zi;
-					else
-						this->zi = 0;
-				}
-				else
-				{
-					if (zi > 0 && zi < 29)
-						this->zi = zi;
-					else this->zi = 0;
-				}
-		}
-	};
+
 	/*
 	data d;
 	for (int an = 2019; an <= 2020; an++)
 		for (int luna = -1; luna <= 13; luna++)
 			for (int zi = -1; zi <= 32; zi++)
 				d = data(zi, luna, an),
-				cout << d.zi << "/" << d.luna << "/" << d.an << '\t'<<"Zi : "<<zi<<" Luna: "<<luna<<" An: "<<an<<endl;*/
+				cout << d.zi << "/" << d.luna << "/" << d.an << '\t'<<"Zi : "<<zi<<" Luna: "<<luna<<" An: "<<an<<endl;
 	char str[] = "qw";
-	data d = data(str);
-	cout << d.zi<<d.luna<<d.an;
+	class :: data d = data::data(29,2,2019);
+	cout << d.zi<<"/"<<d.luna <<"/"<< d.an;
+	*/
+
 	/*
-	cout << "Bun venit la The Ticketing App !" << endl;
-	cout << "Autor: Liviu-Ioan Zecheru" << endl;
+	char data[] = "qq/qq/qqqq";
+	int an = atoi(data + 6);
+	int luna = atoi(data + 3);
+	int zi = atoi(data);
+	class::data d = data::data(zi, luna, an);
+	if (d.verificaData(d))
+		cout << "Data valida";
+	else
+		cout << "Data invalida";
+	*/
+	/*int x = -13;
+	int nrcif = 0;
+	while (x)
+	{
+		x /= 10;
+		nrcif++;
+	}
+	cout << nrcif;*/
+
+	/*char t[] = "12:42";
+	char s[3];
+	strncpy_s(s, t + 3, 2);
+	cout << s << endl;
+	int ora = atoi(t);
+	int min = atoi(t + 3);
+	cout << ora << ":" << min << endl;
+	timp ti = timp(ora, min);
+	if (!ti.getFlag())
+		cout << "Timp valid";
+	else
+		cout << "Timp invalid";*/
+		/*
+		ofstream fw("C:\\Users\\thepr\\Desktop\\proiect POO\\proiectPOO\\date_iesire.txt", ofstream::out);
+		string test;
+		for(int a=-1; a<=9; a++)
+			for(int b=-1; b<=9; b++)
+				for(int c=-1; c<=9; c++)
+					for (int d = -1; d <= 9; d++)
+					{
+						test.clear();
+						test = (char)(a + '0');
+						test += (char)(b + '0');
+						test += ':';
+						test += (char)(c + '0');
+						test += (char)(d + '0');
+						fw << test << endl;
+						int ora, minut;
+						ora = atoi(test.c_str());
+						minut = atoi(test.c_str() + 3);
+						int copie_ora = ora, copie_min = minut;
+						int nrCifOra = 0, nrCifMin = 0;
+						if (test[0] == '0')
+							nrCifOra++;
+						if (test[3] == '0')
+							nrCifMin++;
+						if (copie_ora == 0)
+							nrCifOra++;
+						if (copie_min == 0)
+							nrCifMin++;
+						while (copie_ora)
+						{
+							copie_ora /= 10;
+							nrCifOra++;
+						}
+						while (copie_min)
+						{
+							copie_min /= 10;
+							nrCifMin++;
+						}
+						char bufOra[3];
+						char bufMin[3];
+						strncpy_s(bufOra, test.c_str(), 2);
+						strncpy_s(bufMin, test.c_str() + 3, 2);
+						if (nrCifOra == strlen(bufOra) && nrCifMin == strlen(bufMin))
+						{
+							class::timp t = timp::timp(ora, minut);
+							if (!t.getFlag())
+								fw << "Timp valid\n";
+							else
+								fw << "Timp invalid\n";
+						}
+						else fw << "Timp invalid\n";
+					}
+		fw.close();
+		*/
+
+
+spectacolTeatru s;
+cout << s;
+	/*
+	cout << "Bun venit la The Ticketing App !\n";
+	cout << "Autor: Liviu-Ioan Zecheru\n";
 	cout << "Seria E, Grupa 1061\n";
-	cout << "Versiunea: 1.0" << endl;
-	cout << "Va prezentam un meniu de optiuni: " << endl<<endl;
+	cout << "Versiunea: 1.0\n";
+	cout << "Va prezentam un meniu de optiuni:\n\n";
 	int optiune;
 	int nrCrt = 0;
 	spectacolTeatru* spectacole = new spectacolTeatru[10];
 	do
 	{
-		cout << "\n1. Adaugare spectacol " << endl;
-		cout << "2. Afisare spectacole " << endl;
-		cout << "3. Rezervare bilet " << endl;
-		cout << "4. Afisare nr. bilete rezervate pentru un spectacol" << endl;
-		cout << "5. Afisare nr. bilete disponibile pentru un anumit spectacol" << endl;
-		cout << "6. Afisare nr. bilete disponibile pe categorii pentru un anumit spectacol" << endl;
-		cout << "7. Afisare nr. bilete rezervate pe categorii pentru un anumit spectacol " << endl;
-		cout << "8. Verificare bilet" << endl;
-		cout << "0. Iesire\n\nAlegerea ta: ";
+		cout << "\n1. Adaugare spectacol\n";
+		cout << "2. Afisare spectacole\n";
+		cout << "3. Rezervare bilet\n";
+		cout << "4. Afisare nr. bilete rezervate pentru un spectacol\n";
+		cout << "5. Afisare nr. bilete disponibile pentru un anumit spectacol\n";
+		cout << "6. Afisare nr. bilete disponibile pe categorii pentru un anumit spectacol\n";
+		cout << "7. Afisare nr. bilete rezervate pe categorii pentru un anumit spectacol\n";
+		cout << "8. Verificare bilet\n";
+		cout << "9. Iesire\n\nAlegerea ta: ";
 		cin >> optiune;
-		cin.ignore();
 		if (optiune == 1)
 		{
 			cout << "Cate locuri doriti sa fie disponibile in total la spectacol: ";
 			int nrLocuri;
 			cin >> nrLocuri;
-			cin.ignore();
-			spectacolTeatru s(nrLocuri);
-			if (nrLocuri)
+			while (nrLocuri < 0)
 			{
-				std::cin >> s;
-				spectacole[nrCrt++] = s;
+				cout << "Numar locuri invalid! Introdu altul: ";
+				cin >> nrLocuri;
 			}
+			spectacolTeatru s(nrLocuri);
+			cin >> s;
+			spectacole[nrCrt++] = s;
 		}
 		else if (optiune == 2)
 		{
 			if(nrCrt)
-			for (int i = 0; i < nrCrt; i++)
-				cout << spectacole[i];
+				for (int i = 0; i < nrCrt; i++)
+					cout << spectacole[i];
 			else
 				cout << "Nu exista spectacole inregistrate in sistem!\n";
 		}
@@ -590,11 +593,11 @@ int main()
 			}
 			else cout << "Nu exista spectacole disponibile.\n";
 		}
-		else if(optiune==0)
+		else if(optiune==9)
 		{
-			cout << "\nMultumim ca ati apelat la serviciile noastre de ticketing!\nMade with <3 by Zeek Liviu\nv1.0\nI won't lie, it was so !fun to make this project, especially when the MEMORY ACCESS VIOLATION comes into place. " << char(1)<<'\n';
+			cout << "\nMultumim ca ati apelat la serviciile noastre de ticketing!\nMade with <3 by Zeek Liviu\nv1.0\nI won't lie, it was so !fun to make this project, especially when the _CrtIsValidHeapPointer (block) comes into place. " << char(1)<<'\n';
 		}
 		else cout << "\nOptiunea aleasa nu exista, te rog sa introduci alta optiune.\n\n";
-	}while (optiune != 0);*/
+	}while (optiune != 9);*/
 	return 0;
 }

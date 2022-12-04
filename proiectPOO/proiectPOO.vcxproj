@@ -130,13 +130,17 @@
     <ClCompile Include="biletCategoria1.cpp" />
     <ClCompile Include="biletCategoria2.cpp" />
     <ClCompile Include="biletLoja.cpp" />
+    <ClCompile Include="data.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="timp.cpp" />
     <ClCompile Include="spectacolTeatru.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="biletCategoria1.h" />
     <ClInclude Include="biletCategoria2.h" />
     <ClInclude Include="biletLoja.h" />
+    <ClInclude Include="data.h" />
+    <ClInclude Include="timp.h" />
     <ClInclude Include="spectacolTeatru.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

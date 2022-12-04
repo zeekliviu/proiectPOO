@@ -1,7 +1,5 @@
 #include <iostream>
 #include "spectacolTeatru.h"
-#include "biletCategoria1.h"
-#include "biletCategoria2.h"
 int spectacolTeatru::nrSpectacol = 0;
 spectacolTeatru::spectacolTeatru() : nrMaximLocuri(0)
 {
@@ -448,173 +446,176 @@ spectacolTeatru::spectacolTeatru(const spectacolTeatru& st): nrMaximLocuri(st.nr
 }
 spectacolTeatru& spectacolTeatru::operator=(const spectacolTeatru& st)
 {
-	if (st.denumire != nullptr && strlen(st.denumire) > 0)
+	if(this!=&st)
 	{
-		if (this->denumire != nullptr)
-			delete[] this->denumire, this->denumire = nullptr;
-		this->denumire = new char[strlen(st.denumire) + 1];
-		strcpy_s(this->denumire, strlen(st.denumire) + 1, st.denumire);
-	}
-	if (st.data != nullptr && strlen(st.data) > 0)
-	{
-		if (this->data != nullptr)
-			delete[] this->data, this->data = nullptr;
-		this->data = new char[strlen(st.data) + 1];
-		strcpy_s(this->data, strlen(st.data) + 1, st.data);
-	}
-	if (st.ora != nullptr && strlen(st.ora) > 0)
-	{
-		if (this->ora != nullptr)
-			delete[] this->ora, this->ora = nullptr;
-		this->ora = new char[strlen(st.ora) + 1];
-		strcpy_s(this->ora, strlen(st.ora) + 1, st.ora);
-	}
-	if (st.nrRanduriCat1 > 0 && st.nrBileteCat1 > 0)
-	{
-		if (bileteCat1 == nullptr)
+		if (st.denumire != nullptr && strlen(st.denumire) > 0)
 		{
-			if (st.bileteCat1 != nullptr)
+			if (this->denumire != nullptr)
+				delete[] this->denumire, this->denumire = nullptr;
+			this->denumire = new char[strlen(st.denumire) + 1];
+			strcpy_s(this->denumire, strlen(st.denumire) + 1, st.denumire);
+		}
+		if (st.data != nullptr && strlen(st.data) > 0)
+		{
+			if (this->data != nullptr)
+				delete[] this->data, this->data = nullptr;
+			this->data = new char[strlen(st.data) + 1];
+			strcpy_s(this->data, strlen(st.data) + 1, st.data);
+		}
+		if (st.ora != nullptr && strlen(st.ora) > 0)
+		{
+			if (this->ora != nullptr)
+				delete[] this->ora, this->ora = nullptr;
+			this->ora = new char[strlen(st.ora) + 1];
+			strcpy_s(this->ora, strlen(st.ora) + 1, st.ora);
+		}
+		if (st.nrRanduriCat1 > 0 && st.nrBileteCat1 > 0)
+		{
+			if (bileteCat1 == nullptr)
 			{
-				bileteCat1 = new biletCategoria1 * [st.nrRanduriCat1];
-				for (int i = 0; i < st.nrRanduriCat1; i++)
-					bileteCat1[i] = new biletCategoria1[st.nrBileteCat1];
-				this->nrRanduriCat1 = st.nrRanduriCat1;
-				this->nrBileteCat1 = st.nrBileteCat1;
-				for (int i = 0; i < st.nrRanduriCat1; i++)
-					for (int j = 0; j < st.nrBileteCat1; j++)
-						bileteCat1[i][j] = st.bileteCat1[i][j];
+				if (st.bileteCat1 != nullptr)
+				{
+					bileteCat1 = new biletCategoria1* [st.nrRanduriCat1];
+					for (int i = 0; i < st.nrRanduriCat1; i++)
+						bileteCat1[i] = new biletCategoria1[st.nrBileteCat1];
+					this->nrRanduriCat1 = st.nrRanduriCat1;
+					this->nrBileteCat1 = st.nrBileteCat1;
+					for (int i = 0; i < st.nrRanduriCat1; i++)
+						for (int j = 0; j < st.nrBileteCat1; j++)
+							bileteCat1[i][j] = st.bileteCat1[i][j];
+				}
+				else
+				{
+					bileteCat1 = nullptr;
+					this->nrRanduriCat1 = this->nrBileteCat1 = 0;
+				}
 			}
 			else
 			{
-				bileteCat1 = nullptr;
-				this->nrRanduriCat1 = this->nrBileteCat1 = 0;
+				for (int i = 0; i < this->nrRanduriCat1; i++)
+					delete[] bileteCat1[i];
+				delete[] bileteCat1;
+				if (st.bileteCat1 != nullptr)
+				{
+					bileteCat1 = new biletCategoria1* [st.nrRanduriCat1];
+					for (int i = 0; i < st.nrRanduriCat1; i++)
+						bileteCat1[i] = new biletCategoria1[st.nrBileteCat1];
+					this->nrRanduriCat1 = st.nrRanduriCat1;
+					this->nrBileteCat1 = st.nrBileteCat1;
+					for (int i = 0; i < st.nrRanduriCat1; i++)
+						for (int j = 0; j < st.nrBileteCat1; j++)
+							bileteCat1[i][j] = st.bileteCat1[i][j];
+				}
+				else
+				{
+					bileteCat1 = nullptr;
+					this->nrRanduriCat1 = this->nrBileteCat1 = 0;
+				}
 			}
 		}
 		else
 		{
-			for (int i = 0; i < this->nrRanduriCat1; i++)
-				delete[] bileteCat1[i];
-			delete[] bileteCat1;
-			if (st.bileteCat1 != nullptr)
-			{
-				bileteCat1 = new biletCategoria1 * [st.nrRanduriCat1];
-				for (int i = 0; i < st.nrRanduriCat1; i++)
-					bileteCat1[i] = new biletCategoria1[st.nrBileteCat1];
-				this->nrRanduriCat1 = st.nrRanduriCat1;
-				this->nrBileteCat1 = st.nrBileteCat1;
-				for (int i = 0; i < st.nrRanduriCat1; i++)
-					for (int j = 0; j < st.nrBileteCat1; j++)
-						bileteCat1[i][j] = st.bileteCat1[i][j];
-			}
-			else
-			{
-				bileteCat1 = nullptr;
-				this->nrRanduriCat1 = this->nrBileteCat1 = 0;
-			}
+			bileteCat1 = nullptr;
+			this->nrRanduriCat1 = this->nrBileteCat1 = 0;
 		}
-	}
-	else
-	{
-		bileteCat1 = nullptr;
-		this->nrRanduriCat1 = this->nrBileteCat1 = 0;
-	}
-	if (st.nrRanduriCat2 > 0 && st.nrBileteCat2 > 0)
-	{
-		if (bileteCat2 == nullptr)
+		if (st.nrRanduriCat2 > 0 && st.nrBileteCat2 > 0)
 		{
-			if (st.bileteCat2 != nullptr)
+			if (bileteCat2 == nullptr)
 			{
-				bileteCat2 = new biletCategoria2 * [st.nrRanduriCat2];
-				for (int i = 0; i < st.nrRanduriCat2; i++)
-					bileteCat2[i] = new biletCategoria2[st.nrBileteCat2];
-				this->nrRanduriCat2 = st.nrRanduriCat2;
-				this->nrBileteCat2 = st.nrBileteCat2;
-				for (int i = 0; i < st.nrRanduriCat2; i++)
-					for (int j = 0; j < st.nrBileteCat2; j++)
-						bileteCat2[i][j] = st.bileteCat2[i][j];
+				if (st.bileteCat2 != nullptr)
+				{
+					bileteCat2 = new biletCategoria2* [st.nrRanduriCat2];
+					for (int i = 0; i < st.nrRanduriCat2; i++)
+						bileteCat2[i] = new biletCategoria2[st.nrBileteCat2];
+					this->nrRanduriCat2 = st.nrRanduriCat2;
+					this->nrBileteCat2 = st.nrBileteCat2;
+					for (int i = 0; i < st.nrRanduriCat2; i++)
+						for (int j = 0; j < st.nrBileteCat2; j++)
+							bileteCat2[i][j] = st.bileteCat2[i][j];
+				}
+				else
+				{
+					bileteCat2 = nullptr;
+					this->nrRanduriCat2 = this->nrBileteCat2 = 0;
+				}
 			}
 			else
 			{
-				bileteCat2 = nullptr;
-				this->nrRanduriCat2 = this->nrBileteCat2 = 0;
+				for (int i = 0; i < this->nrRanduriCat2; i++)
+					delete[] bileteCat2[i];
+				delete[] bileteCat2;
+				if (st.bileteCat2 != nullptr)
+				{
+					bileteCat2 = new biletCategoria2* [st.nrRanduriCat2];
+					for (int i = 0; i < st.nrRanduriCat2; i++)
+						bileteCat2[i] = new biletCategoria2[st.nrBileteCat2];
+					this->nrRanduriCat2 = st.nrRanduriCat2;
+					this->nrBileteCat2 = st.nrBileteCat2;
+					for (int i = 0; i < st.nrRanduriCat2; i++)
+						for (int j = 0; j < st.nrBileteCat2; j++)
+							bileteCat2[i][j] = st.bileteCat2[i][j];
+				}
+				else
+				{
+					bileteCat2 = nullptr;
+					this->nrRanduriCat2 = this->nrBileteCat2 = 0;
+				}
 			}
 		}
 		else
 		{
-			for (int i = 0; i < this->nrRanduriCat2; i++)
-				delete[] bileteCat2[i];
-			delete[] bileteCat2;
-			if (st.bileteCat2 != nullptr)
-			{
-				bileteCat2 = new biletCategoria2 * [st.nrRanduriCat2];
-				for (int i = 0; i < st.nrRanduriCat2; i++)
-					bileteCat2[i] = new biletCategoria2[st.nrBileteCat2];
-				this->nrRanduriCat2 = st.nrRanduriCat2;
-				this->nrBileteCat2 = st.nrBileteCat2;
-				for (int i = 0; i < st.nrRanduriCat2; i++)
-					for (int j = 0; j < st.nrBileteCat2; j++)
-						bileteCat2[i][j] = st.bileteCat2[i][j];
-			}
-			else
-			{
-				bileteCat2 = nullptr;
-				this->nrRanduriCat2 = this->nrBileteCat2 = 0;
-			}
+			bileteCat2 = nullptr;
+			this->nrRanduriCat2 = this->nrBileteCat2 = 0;
 		}
-	}
-	else
-	{
-		bileteCat2 = nullptr;
-		this->nrRanduriCat2 = this->nrBileteCat2 = 0;
-	}
-	if (st.nrRanduriLoja > 0 && st.nrBileteLoja > 0)
-	{
-		if (bileteLoja == nullptr)
+		if (st.nrRanduriLoja > 0 && st.nrBileteLoja > 0)
 		{
-			if (st.bileteLoja != nullptr)
+			if (bileteLoja == nullptr)
 			{
-				bileteLoja = new biletLoja * [st.nrRanduriLoja];
-				for (int i = 0; i < st.nrRanduriLoja; i++)
-					bileteLoja[i] = new biletLoja[st.nrBileteLoja];
-				this->nrRanduriLoja = st.nrRanduriLoja;
-				this->nrBileteLoja = st.nrBileteLoja;
-				for (int i = 0; i < st.nrRanduriLoja; i++)
-					for (int j = 0; j < st.nrBileteLoja; j++)
-						bileteLoja[i][j] = st.bileteLoja[i][j];
+				if (st.bileteLoja != nullptr)
+				{
+					bileteLoja = new biletLoja* [st.nrRanduriLoja];
+					for (int i = 0; i < st.nrRanduriLoja; i++)
+						bileteLoja[i] = new biletLoja[st.nrBileteLoja];
+					this->nrRanduriLoja = st.nrRanduriLoja;
+					this->nrBileteLoja = st.nrBileteLoja;
+					for (int i = 0; i < st.nrRanduriLoja; i++)
+						for (int j = 0; j < st.nrBileteLoja; j++)
+							bileteLoja[i][j] = st.bileteLoja[i][j];
+				}
+				else
+				{
+					bileteLoja = nullptr;
+					this->nrRanduriLoja = this->nrBileteLoja = 0;
+				}
 			}
 			else
 			{
-				bileteLoja = nullptr;
-				this->nrRanduriLoja = this->nrBileteLoja = 0;
+				for (int i = 0; i < this->nrRanduriLoja; i++)
+					delete[] bileteLoja[i];
+				delete[] bileteLoja;
+				if (st.bileteLoja != nullptr)
+				{
+					bileteLoja = new biletLoja* [st.nrRanduriLoja];
+					for (int i = 0; i < st.nrRanduriLoja; i++)
+						bileteLoja[i] = new biletLoja[st.nrBileteLoja];
+					this->nrRanduriLoja = st.nrRanduriLoja;
+					this->nrBileteLoja = st.nrBileteLoja;
+					for (int i = 0; i < st.nrRanduriLoja; i++)
+						for (int j = 0; j < st.nrBileteLoja; j++)
+							bileteLoja[i][j] = st.bileteLoja[i][j];
+				}
+				else
+				{
+					bileteLoja = nullptr;
+					this->nrRanduriLoja = this->nrBileteLoja = 0;
+				}
 			}
 		}
 		else
 		{
-			for (int i = 0; i < this->nrRanduriLoja; i++)
-				delete[] bileteLoja[i];
-			delete[] bileteLoja;
-			if (st.bileteLoja != nullptr)
-			{
-				bileteLoja = new biletLoja * [st.nrRanduriLoja];
-				for (int i = 0; i < st.nrRanduriLoja; i++)
-					bileteLoja[i] = new biletLoja[st.nrBileteLoja];
-				this->nrRanduriLoja = st.nrRanduriLoja;
-				this->nrBileteLoja = st.nrBileteLoja;
-				for (int i = 0; i < st.nrRanduriLoja; i++)
-					for (int j = 0; j < st.nrBileteLoja; j++)
-						bileteLoja[i][j] = st.bileteLoja[i][j];
-			}
-			else
-			{
-				bileteLoja = nullptr;
-				this->nrRanduriLoja = this->nrBileteLoja = 0;
-			}
+			bileteLoja = nullptr;
+			this->nrRanduriLoja = this->nrBileteLoja = 0;
 		}
-	}
-	else
-	{
-		bileteLoja = nullptr;
-		this->nrRanduriLoja = this->nrBileteLoja = 0;
 	}
 	return *this;
 }
@@ -625,16 +626,17 @@ ostream& operator<<(ostream& out, spectacolTeatru st)
 		out << st.denumire << " ";
 	else
 		out << "Necunoscut ";
-	out << "are loc la data de ";
+	out << "are loc in data de ";
 	if (st.data)
 		out << st.data << " ";
 	else
-		out << "necunoscuta ";
-	out << "si la ora ";
+		out << "TBA ";
+	out << "la ora ";
 	if (st.ora)
-		out << st.ora << ".";
+		out << st.ora << ".\n";
 	else
-		out << " necunoscuta.";
+		out << "TBA.";
+	out<<"Numar locuri in sala : " << st.nrMaximLocuri << endl;
 	out << "\n\nBilete categoria 1: " << endl<<endl;
 	if (st.bileteCat1 != nullptr)
 	{
@@ -674,6 +676,7 @@ istream& operator>>(istream& in, spectacolTeatru& st)
 {
 	char buffer[100];
 	cout << "Denumire spectacol: ";
+	in.ignore();
 	in.getline(buffer,100);
 	if (st.denumire != nullptr)
 		delete[] st.denumire, st.denumire=nullptr;
@@ -682,124 +685,117 @@ istream& operator>>(istream& in, spectacolTeatru& st)
 	cout << "Data spectacol (zz/ll/aaaa): ";
 	in.getline(buffer, 30);
 	bool is_ok = false;
-	if(strlen(buffer)==10)
+	if (strlen(buffer) == 10)
 	{
-		int an, luna, zi; // folosim atoi()
-		bool bisect;
-		char* buf_aux;
-		buf_aux = new char[5];
-		strcpy_s(buf_aux, 5, buffer + 6);
-		if (atoi(buf_aux))
-		{
-			an = atoi(buf_aux);
-			if (an % 4 == 0)
-			{
-				if (an % 100 == 0)
-				{
-					if (an % 400 == 0)
-						bisect = true;
-					else bisect = false;
-				}
-				else bisect = true;
-			}
-			else bisect = false;
-			delete[] buf_aux;
-			buf_aux = new char[3];
-			strncpy_s(buf_aux, 3, buffer + 3, 2);
-			if (atoi(buf_aux))
-			{
-				luna = atoi(buf_aux);
-				if (luna >= 1 && luna <= 12)
-				{
-					delete[] buf_aux;
-					buf_aux = new char[3];
-					strncpy_s(buf_aux, 3, buffer, 2);
-					if (atoi(buf_aux))
-					{
-						zi = atoi(buf_aux);
-						if (luna == 1 || luna == 3 || luna == 5 || luna == 7 || luna == 8 || luna == 10 || luna == 12)
-							if (zi >= 1 && zi <= 31)
-								is_ok = true;
-						else if (luna == 4 || luna == 6 || luna == 9 || luna == 11)
-						{
-							if (zi >= 1 && zi <= 30)
-								is_ok = true;
-						}
-						else if (luna == 2)
-						{
-							if (bisect)
-							{
-								if (zi >= 1 && zi <= 29)
-									is_ok = true;
-							}
-							else
-							{
-								if (zi >= 1 && zi <= 28)
-									is_ok = true;
-							}
-						}
-					}
-				}
-			}
-			else
-			{
-				
-			}
-		}
-		else
-		{
-			cout << "Anul nu este valid!";
-			bool ok = false;
-			while (!ok)
-			{
-				cout << "Introduceti un an valid: ";
-				in.getline(buffer, 30);
-				strcpy_s(buf_aux, 5, buffer + 6);
-				if (atoi(buf_aux))
-				{
-					an = atoi(buf_aux);
-					if (an % 4 == 0)
-					{
-						if (an % 100 == 0)
-						{
-							if (an % 400 == 0)
-								bisect = true;
-							else bisect = false;
-						}
-						else bisect = true;
-					}
-					else bisect = false;
-					ok = true;
-				}
-				else cout << "Anul nu este valid!";
-			}
-		}
+		int an, luna, zi;
+		an = atoi(buffer + 6);
+		luna = atoi(buffer + 3);
+		zi = atoi(buffer);
+		class::data d=data::data(zi, luna, an);
+		if(d.verificaData())
+			is_ok = true;
 	}
-	else 
+	while (!is_ok)
 	{
-		cout << "Data nu este valida!";
-		bool ok = false;
-		while (!ok)
+		cout << "Data incorecta. Introduceti data in formatul zz/ll/aaaa: ";
+		in.getline(buffer, 30);
+		if (strlen(buffer) == 10)
 		{
-			cout << "Introduceti o data valida (zz/ll/aaaa): ";
-			in.getline(buffer, 30);
-			if (strlen(buffer) == 10)
-			{
-				if (st.data != nullptr)
-					delete[] st.data, st.data = nullptr;
-				st.data = new char[strlen(buffer) + 1];
-				strcpy_s(st.data, strlen(buffer) + 1, buffer);
-				ok = true;
-			}
-			else cout << "Data nu este valida!";
+			int an, luna, zi;
+			an = atoi(buffer + 6);
+			luna = atoi(buffer + 3);
+			zi = atoi(buffer);
+			class::data d = data::data(zi, luna, an);
+			if (d.verificaData())
+				is_ok = true;
 		}
 	}
 	if(st.data!=nullptr)
 		delete[] st.data, st.data = nullptr;
 	st.data = new char[strlen(buffer) + 1];
 	strcpy_s(st.data, strlen(buffer) + 1, buffer);
-	cout << "Ora spectacol: ";
+	cout << "Ora spectacol (hh:mm): ";
 	in.getline(buffer, 20);
+	is_ok = false;
+	if (strlen(buffer) == 5)
+	{
+		int ora, minut;
+		ora = atoi(buffer);
+		minut = atoi(buffer + 3);
+		int copie_ora = ora, copie_min = minut;
+		int nrCifOra = 0, nrCifMin = 0;
+		if (buffer[0] == '0')
+			nrCifOra++;
+		if (buffer[3] == '0')
+			nrCifMin++;
+		if (copie_ora == 0)
+			nrCifOra++;
+		if (copie_min == 0)
+			nrCifMin++;
+		while (copie_ora)
+		{
+			copie_ora /= 10;
+			nrCifOra++;
+		}
+		while (copie_min)
+		{
+			copie_min /= 10;
+			nrCifMin++;
+		}
+		char bufOra[3];
+		char bufMin[3];
+		strncpy_s(bufOra, buffer, 2);
+		strncpy_s(bufMin, buffer+3,2);
+		if (nrCifOra == strlen(bufOra) && nrCifMin == strlen(bufMin))
+		{
+			class::timp t = timp::timp(ora, minut);
+			if (!t.getFlag())
+				is_ok = true;
+		}
+		else is_ok = false;
+	}
+	while (!is_ok)
+	{
+		cout << "Ora incorecta. Introduceti ora in formatul hh:mm: ";
+		in.getline(buffer, 20);
+		if (strlen(buffer) == 5)
+		{
+			int ora, minut;
+			ora = atoi(buffer);
+			minut = atoi(buffer + 3);
+			int copie_ora = ora, copie_min = minut;
+			int nrCifOra = 0, nrCifMin = 0;
+			if (buffer[0] == '0')
+				nrCifOra++;
+			if (buffer[3] == '0')
+				nrCifMin++;
+			if (copie_ora == 0)
+				nrCifOra++;
+			if (copie_min == 0)
+				nrCifMin++;
+			while (copie_ora)
+			{
+				copie_ora /= 10;
+				nrCifOra++;
+			}
+			while (copie_min)
+			{
+				copie_min /= 10;
+				nrCifMin++;
+			}
+			char bufOra[3];
+			char bufMin[3];
+			strncpy_s(bufOra, buffer, 2);
+			strncpy_s(bufMin, buffer + 3, 2);
+			if (nrCifOra == strlen(bufOra) && nrCifMin == strlen(bufMin))
+			{
+				class::timp t = timp::timp(ora, minut);
+				if (!t.getFlag())
+					is_ok = true;
+			}
+			else is_ok = false;
+		}
+	}
 	if (st.ora != nullptr)
 		delete[] st.ora, st.ora = nullptr;
 	st.ora = new char[strlen(buffer) + 1];
@@ -817,17 +813,18 @@ istream& operator>>(istream& in, spectacolTeatru& st)
 	in >> st.nrRanduriLoja;
 	cout << "Nr. bilete pe rand Loja: ";
 	in >> st.nrBileteLoja;
+	in.ignore();
 	if (st.nrRanduriCat1 > 0 && st.nrBileteCat1 > 0)
 	{
 		if(st.nrRanduriCat1*st.nrBileteCat1<=st.nrMaximLocuri)
 		{
-			st.bileteCat1 = new biletCategoria1 * [st.nrRanduriCat1];
+			st.bileteCat1 = new biletCategoria1* [st.nrRanduriCat1];
 			for (int i = 0; i < st.nrRanduriCat1; i++)
 				st.bileteCat1[i] = new biletCategoria1[st.nrBileteCat1];
 			for (int i = 0; i < st.nrRanduriCat1; i++)
 				for (int j = 0; j < st.nrBileteCat1; j++)
 				{
-					cout << "Bilet categoria 1, rand "<< i+1<<", loc "<<j+1<<":\n";
+					cout << "Bilet Categoria 1, rand " << i + 1 << ", loc " << j + 1 << ":\n";
 					in >> st.bileteCat1[i][j];
 				}
 		}
@@ -846,13 +843,13 @@ istream& operator>>(istream& in, spectacolTeatru& st)
 	{
 			if (st.nrRanduriCat2 * st.nrBileteCat2 <= st.nrMaximLocuri - st.nrRanduriCat1 * st.nrBileteCat1)
 			{
-				st.bileteCat2 = new biletCategoria2 * [st.nrRanduriCat2];
+				st.bileteCat2 = new biletCategoria2* [st.nrRanduriCat2];
 				for (int i = 0; i < st.nrRanduriCat2; i++)
 					st.bileteCat2[i] = new biletCategoria2[st.nrBileteCat2];
 				for (int i = 0; i < st.nrRanduriCat2; i++)
 					for (int j = 0; j < st.nrBileteCat2; j++)
 					{
-						cout << "Bilet categoria 2, rand " << i + 1 << ", loc " << j + 1 << ":\n";
+						cout << "Bilet Categoria 2, rand " << i + 1 << ", loc " << j + 1 << ":\n";
 						in >> st.bileteCat2[i][j];
 					}
 			}
@@ -872,13 +869,13 @@ istream& operator>>(istream& in, spectacolTeatru& st)
 		
 		if (st.nrRanduriLoja * st.nrBileteLoja <= st.nrMaximLocuri - st.nrRanduriCat1 * st.nrBileteCat1 - st.nrRanduriCat2 * st.nrBileteCat2)
 			{
-				st.bileteLoja = new biletLoja * [st.nrRanduriLoja];
+				st.bileteLoja = new biletLoja* [st.nrRanduriLoja];
 				for (int i = 0; i < st.nrRanduriLoja; i++)
 					st.bileteLoja[i] = new biletLoja[st.nrBileteLoja];
 				for (int i = 0; i < st.nrRanduriLoja; i++)
 					for (int j = 0; j < st.nrBileteLoja; j++)
 					{
-						cout << "Bilet loja, rand " << i + 1 << ", loc " << j + 1 << ":\n";
+						cout << "Bilet Loja, rand " << i + 1 << ", loc " << j + 1 << ":\n";
 						in >> st.bileteLoja[i][j];
 					}
 			}
