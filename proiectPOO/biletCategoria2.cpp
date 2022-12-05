@@ -143,6 +143,14 @@ biletCategoria2::~biletCategoria2()
 	if (UID)
 		delete[] UID, UID = nullptr;
 }
+int biletCategoria2::getNrBilete()
+{
+	return nrBilete;
+}
+int biletCategoria2::getId()
+{
+	return id;
+}
 bool biletCategoria2::getOccupancy()
 {
 	return ocupat;
@@ -169,6 +177,54 @@ int* biletCategoria2::getUID()
 int biletCategoria2::getdimUID()
 {
 	return dimUID;
+}
+void biletCategoria2::setNrBilete(int nrBilete)
+{
+	if (nrBilete > 0)
+		this->nrBilete = nrBilete;
+}
+void biletCategoria2::setId(int id)
+{
+	if (id > 0)
+		this->id = id;
+}
+void biletCategoria2::setOccupancy(bool stare)
+{
+	ocupat = stare;
+}
+void biletCategoria2::setNumeSpectator(const char* s)
+{
+	if (s != nullptr)
+	{
+		if (numeSpectator)
+			delete[] numeSpectator, numeSpectator = nullptr;
+		numeSpectator = new char[strlen(s) + 1];
+		strcpy_s(numeSpectator, strlen(s) + 1, s);
+		UID = new int[log10(id) + 1 + strlen(numeSpectator)];
+		dimUID = log10(id) + strlen(numeSpectator) + 1;
+		int i = 0;
+		int copie = id;
+		while (copie)
+		{
+			UID[i] = copie % 10;
+			copie /= 10;
+			i++;
+		}
+		for (int j = i; j < dimUID; j++)
+			UID[j] = numeSpectator[j - 1];
+	}
+}
+void biletCategoria2::setUID(int* UID, int dimUID)
+{
+	if (UID != nullptr && dimUID > 0)
+	{
+		if (this->UID != nullptr)
+			delete[] this->UID, this->UID = nullptr;
+		this->UID = new int[dimUID];
+		this->dimUID = dimUID;
+		for (int i = 0; i < dimUID; i++)
+			this->UID[i] = UID[i];
+	}
 }
 bool biletCategoria2::checkUID(char* check)
 {
@@ -215,30 +271,4 @@ bool biletCategoria2::checkUID(char* check)
 		return false;
 	}
 	return false;
-}
-void biletCategoria2::setOccupancy(bool stare)
-{
-	ocupat = stare;
-}
-void biletCategoria2::setNumeSpectator(const char* s)
-{
-	if (s != nullptr)
-	{
-		if (numeSpectator)
-			delete[] numeSpectator, numeSpectator = nullptr;
-		numeSpectator = new char[strlen(s) + 1];
-		strcpy_s(numeSpectator, strlen(s) + 1, s);
-		UID = new int[log10(id) + 1 + strlen(numeSpectator)];
-		dimUID = log10(id) + strlen(numeSpectator) + 1;
-		int i = 0;
-		int copie = id;
-		while (copie)
-		{
-			UID[i] = copie % 10;
-			copie /= 10;
-			i++;
-		}
-		for (int j = i; j < dimUID; j++)
-			UID[j] = numeSpectator[j - 1];
-	}
 }

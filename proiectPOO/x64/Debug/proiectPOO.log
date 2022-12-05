@@ -1,2 +1,26 @@
 ﻿  main.cpp
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(31,22): warning C4473: 'sscanf_s' : not enough arguments passed for format string
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(31,22): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(31,22): message : the missing variadic argument 3 is required by format string '%c'
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(31,22): message : this argument is used as a buffer size
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(46,23): warning C4473: 'sscanf_s' : not enough arguments passed for format string
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(46,23): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(46,23): message : the missing variadic argument 3 is required by format string '%c'
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(46,23): message : this argument is used as a buffer size
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(60,24): warning C4473: 'sscanf_s' : not enough arguments passed for format string
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(60,24): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(60,24): message : the missing variadic argument 3 is required by format string '%c'
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(60,24): message : this argument is used as a buffer size
+  spectacolTeatru.cpp
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(919,21): warning C4473: 'sscanf_s' : not enough arguments passed for format string
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(919,21): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(919,21): message : the missing variadic argument 3 is required by format string '%c'
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(919,21): message : this argument is used as a buffer size
+  Generating Code...
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(1064): warning C4715: 'spectacolTeatru::getDenumire': not all control paths return a value
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(1073): warning C4715: 'spectacolTeatru::getData': not all control paths return a value
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(1082): warning C4715: 'spectacolTeatru::getOra': not all control paths return a value
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(1235): warning C4715: 'spectacolTeatru::getBiletCat1': not all control paths return a value
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(1240): warning C4715: 'spectacolTeatru::getBiletCat2': not all control paths return a value
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\spectacolTeatru.cpp(1245): warning C4715: 'spectacolTeatru::getBiletLoja': not all control paths return a value
   proiectPOO.vcxproj -> C:\Users\thepr\Desktop\proiect POO\proiectPOO\x64\Debug\proiectPOO.exe

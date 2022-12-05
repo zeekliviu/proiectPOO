@@ -22,11 +22,16 @@ public:
 	biletCategoria2& operator++();
 	biletCategoria2& operator++(int);
 	~biletCategoria2();
+	static int getNrBilete();
+	int getId();
 	bool getOccupancy();
 	char* getNumeSpectator();
 	int* getUID();
 	int getdimUID();
-	bool checkUID(char*);
+	void setNrBilete(int);
+	void setId(int);
 	void setOccupancy(bool);
 	void setNumeSpectator(const char*);
+	void setUID(int*, int);
+	bool checkUID(char*);
 };

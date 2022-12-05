@@ -1,4 +1,6 @@
 #pragma once
+#include <iostream>
+using namespace std;
 class data
 {
 private:
@@ -14,6 +16,20 @@ public:
 	data(int, char, char);
 	data(int, int);
 	data(int, int, int);
+	data(const data&);
+	data& operator=(const data&);
+	friend ostream& operator<<(ostream&, data);
+	friend istream& operator>>(istream&, data&);
+	data& operator+(const data&);
+	data operator--();
+	data operator--(int);
+	int getZi();
+	int getLuna();
+	int getAn();
+	void setZi(int);
+	void setLuna(int);
+	void setAn(int);
 	bool verificaData();
+	bool isBisect(int);
 };
 

@@ -11,9 +11,12 @@ spectacolTeatru::spectacolTeatru() : nrMaximLocuri(0)
 	nrRanduriCat1 = nrMaximLocuri;
 	nrRanduriCat2 = nrMaximLocuri;
 	nrRanduriLoja = nrMaximLocuri;
-	denumire = nullptr;
-	data = nullptr;
-	ora = nullptr;
+	denumire = new char[strlen("TBA") + 1];
+	strcpy_s(denumire, strlen("TBA") + 1, "TBA");
+	data = new char[strlen("TBA") + 1];
+	strcpy_s(data, strlen("TBA") + 1, "TBA");
+	ora = new char[strlen("TBA") + 1];
+	strcpy_s(ora, strlen("TBA") + 1, "TBA");
 	nrSpectacol++;
 }
 spectacolTeatru::spectacolTeatru(const int nrMaximLocuri) : nrMaximLocuri(nrMaximLocuri)
@@ -56,28 +59,79 @@ spectacolTeatru::spectacolTeatru(const char* denumire) : nrMaximLocuri(0)
 		strcpy_s(this->denumire, strlen(denumire) + 1, denumire);
 	}
 	else
-		this->denumire = nullptr;
+	{
+		this->denumire = new char[strlen("TBA") + 1];
+		strcpy_s(this->denumire, strlen("TBA") + 1, "TBA");
+	}
 	nrSpectacol++;
 }
 spectacolTeatru::spectacolTeatru(const char* denumire, const char* data): spectacolTeatru(denumire)
 {
-	if (data != nullptr && strlen(data) > 0)
+	if (data != nullptr)
 	{
-		this->data = new char[strlen(data) + 1];
-		strcpy_s(this->data, strlen(data) + 1, data);
+		if (strlen(data) == 10)
+		{
+			int an, luna, zi;
+			an = atoi(data + 6);
+			luna = atoi(data + 3);
+			zi = atoi(data);
+			class::data d = data::data(zi, luna, an);
+			if (d.verificaData())
+			{
+				if (this->data != nullptr)
+					delete[] this->data;
+				this->data = new char[strlen(data) + 1];
+				strcpy_s(this->data, strlen(data) + 1, data);
+			}
+		}
 	}
-	else
-		this->data = nullptr;
 }
 spectacolTeatru::spectacolTeatru(const char* denumire, const char* data, const char* ora) : spectacolTeatru(denumire, data)
 {
-	if (ora != nullptr && strlen(ora) > 0)
+	if (ora != nullptr)
 	{
-		this->ora = new char[strlen(ora) + 1];
-		strcpy_s(this->ora, strlen(ora) + 1, ora);
+		if (strlen(ora) == 5)
+		{
+			int o, minut;
+			o = atoi(ora);
+			minut = atoi(ora + 3);
+			int copie_ora = o, copie_min = minut;
+			int nrCifOra = 0, nrCifMin = 0;
+			if (ora[0] == '0')
+				nrCifOra++;
+			if (ora[3] == '0')
+				nrCifMin++;
+			if (copie_ora == 0)
+				nrCifOra++;
+			if (copie_min == 0)
+				nrCifMin++;
+			while (copie_ora)
+			{
+				copie_ora /= 10;
+				nrCifOra++;
+			}
+			while (copie_min)
+			{
+				copie_min /= 10;
+				nrCifMin++;
+			}
+			char bufOra[3];
+			char bufMin[3];
+			strncpy_s(bufOra, ora, 2);
+			strncpy_s(bufMin, ora + 3, 2);
+			if (nrCifOra == strlen(bufOra) && nrCifMin == strlen(bufMin))
+			{
+				class::timp t = timp::timp(o, minut);
+				if (!t.getFlag())
+				{
+					if (this->ora != nullptr)
+						delete[] this->ora;
+					this->ora = new char[strlen(ora) + 1];
+					strcpy_s(this->ora, strlen(ora) + 1, ora);
+				}
+			}
+		}
 	}
-	else
-		this->ora = nullptr;
 }
 spectacolTeatru::spectacolTeatru(const int nrMaximLocuri, const char* denumire) : spectacolTeatru(nrMaximLocuri)
 {
@@ -87,27 +141,78 @@ spectacolTeatru::spectacolTeatru(const int nrMaximLocuri, const char* denumire) 
 		strcpy_s(this->denumire, strlen(denumire) + 1, denumire);
 	}
 	else
-		this->denumire = nullptr;
+	{
+		this->denumire = new char[strlen("TBA") + 1];
+		strcpy_s(this->denumire, strlen("TBA") + 1, "TBA");
+	}
 }
 spectacolTeatru::spectacolTeatru(const int nrMaximLocuri, const char* denumire, const char* data) : spectacolTeatru(nrMaximLocuri, denumire)
 {
-	if (data != nullptr && strlen(data) > 0)
+	if (data != nullptr)
 	{
-		this->data = new char[strlen(data) + 1];
-		strcpy_s(this->data, strlen(data) + 1, data);
+		if (strlen(data) == 10)
+		{
+			int an, luna, zi;
+			an = atoi(data + 6);
+			luna = atoi(data + 3);
+			zi = atoi(data);
+			class::data d = data::data(zi, luna, an);
+			if (d.verificaData())
+			{
+				if (this->data != nullptr)
+					delete[] this->data;
+				this->data = new char[strlen(data) + 1];
+				strcpy_s(this->data, strlen(data) + 1, data);
+			}
+		}
 	}
-	else
-		this->data = nullptr;
 }
 spectacolTeatru::spectacolTeatru(const int nrMaximLocuri, const char* denumire, const char* data, const char* ora) : spectacolTeatru(nrMaximLocuri, denumire, data)
 {
-	if (ora != nullptr && strlen(ora) > 0)
+	if (ora != nullptr)
 	{
-		this->ora = new char[strlen(ora) + 1];
-		strcpy_s(this->ora, strlen(ora) + 1, ora);
+		if (strlen(ora) == 5)
+		{
+			int o, minut;
+			o = atoi(ora);
+			minut = atoi(ora + 3);
+			int copie_ora = o, copie_min = minut;
+			int nrCifOra = 0, nrCifMin = 0;
+			if (ora[0] == '0')
+				nrCifOra++;
+			if (ora[3] == '0')
+				nrCifMin++;
+			if (copie_ora == 0)
+				nrCifOra++;
+			if (copie_min == 0)
+				nrCifMin++;
+			while (copie_ora)
+			{
+				copie_ora /= 10;
+				nrCifOra++;
+			}
+			while (copie_min)
+			{
+				copie_min /= 10;
+				nrCifMin++;
+			}
+			char bufOra[3];
+			char bufMin[3];
+			strncpy_s(bufOra, ora, 2);
+			strncpy_s(bufMin, ora + 3, 2);
+			if (nrCifOra == strlen(bufOra) && nrCifMin == strlen(bufMin))
+			{
+				class::timp t = timp::timp(o, minut);
+				if (!t.getFlag())
+				{
+					if (this->ora != nullptr)
+						delete[] this->ora;
+					this->ora = new char[strlen(ora) + 1];
+					strcpy_s(this->ora, strlen(ora) + 1, ora);
+				}
+			}
+		}
 	}
-	else
-		this->ora = nullptr;
 }
 spectacolTeatru::spectacolTeatru(const int nrMaximLocuri, const char* denumire, int nrRanduriLocuriCat1Cat2Loja): spectacolTeatru(nrMaximLocuri, denumire)
 {
@@ -155,18 +260,70 @@ spectacolTeatru::spectacolTeatru(const int nrMaximLocuri, const char* denumire, 
 }
 spectacolTeatru::spectacolTeatru(const int nrMaximLocuri, const char* denumire, const char* data, int nrRanduriLocuriCat1Cat2Loja) : spectacolTeatru(nrMaximLocuri, denumire, nrRanduriLocuriCat1Cat2Loja)
 {
-	if (data != nullptr && strlen(data) > 0)
+	if (data != nullptr)
 	{
-		this->data = new char[strlen(data) + 1];
-		strcpy_s(this->data, strlen(data) + 1, data);
+		if (strlen(data) == 10)
+		{
+			int an, luna, zi;
+			an = atoi(data + 6);
+			luna = atoi(data + 3);
+			zi = atoi(data);
+			class::data d = data::data(zi, luna, an);
+			if (d.verificaData())
+			{
+				if (this->data != nullptr)
+					delete[] this->data;
+				this->data = new char[strlen(data) + 1];
+				strcpy_s(this->data, strlen(data) + 1, data);
+			}
+		}
 	}
 }
 spectacolTeatru::spectacolTeatru(const int nrMaximLocuri, const char* denumire, const char* data, const char* ora, int nrRanduriLocuriCat1Cat2Loja) : spectacolTeatru(nrMaximLocuri, denumire, data, nrRanduriLocuriCat1Cat2Loja)
 {
-	if (ora != nullptr && strlen(ora) > 0)
+	if (ora != nullptr)
 	{
-		this->ora = new char[strlen(ora) + 1];
-		strcpy_s(this->ora, strlen(ora) + 1, ora);
+		if (strlen(ora) == 5)
+		{
+			int o, minut;
+			o = atoi(ora);
+			minut = atoi(ora + 3);
+			int copie_ora = o, copie_min = minut;
+			int nrCifOra = 0, nrCifMin = 0;
+			if (ora[0] == '0')
+				nrCifOra++;
+			if (ora[3] == '0')
+				nrCifMin++;
+			if (copie_ora == 0)
+				nrCifOra++;
+			if (copie_min == 0)
+				nrCifMin++;
+			while (copie_ora)
+			{
+				copie_ora /= 10;
+				nrCifOra++;
+			}
+			while (copie_min)
+			{
+				copie_min /= 10;
+				nrCifMin++;
+			}
+			char bufOra[3];
+			char bufMin[3];
+			strncpy_s(bufOra, ora, 2);
+			strncpy_s(bufMin, ora + 3, 2);
+			if (nrCifOra == strlen(bufOra) && nrCifMin == strlen(bufMin))
+			{
+				class::timp t = timp::timp(o, minut);
+				if (!t.getFlag())
+				{
+					if (this->ora != nullptr)
+						delete[] this->ora;
+					this->ora = new char[strlen(ora) + 1];
+					strcpy_s(this->ora, strlen(ora) + 1, ora);
+				}
+			}
+		}
 	}
 }
 spectacolTeatru::spectacolTeatru(const int nrMaximLocuri, const char* denumire, int nrRanduriCat1, int nrBileteCat1): spectacolTeatru(nrMaximLocuri, denumire)
@@ -186,18 +343,70 @@ spectacolTeatru::spectacolTeatru(const int nrMaximLocuri, const char* denumire, 
 }
 spectacolTeatru::spectacolTeatru(const int nrMaximLocuri, const char* denumire, const char* data, int nrRanduriCat1, int nrBileteCat1): spectacolTeatru(nrMaximLocuri, denumire, nrRanduriCat1, nrBileteCat1)
 {
-	if (data != nullptr && strlen(data) > 0)
+	if (data != nullptr)
 	{
-		this->data = new char[strlen(data) + 1];
-		strcpy_s(this->data, strlen(data) + 1, data);
+		if (strlen(data) == 10)
+		{
+			int an, luna, zi;
+			an = atoi(data + 6);
+			luna = atoi(data + 3);
+			zi = atoi(data);
+			class::data d = data::data(zi, luna, an);
+			if (d.verificaData())
+			{
+				if (this->data != nullptr)
+					delete[] this->data;
+				this->data = new char[strlen(data) + 1];
+				strcpy_s(this->data, strlen(data) + 1, data);
+			}
+		}
 	}
 }
 spectacolTeatru::spectacolTeatru(const int nrMaximLocuri, const char* denumire, const char* data, const char* ora, int nrRanduriCat1, int nrBileteCat1) : spectacolTeatru(nrMaximLocuri, denumire, data, nrRanduriCat1, nrBileteCat1)
 {
-	if (ora != nullptr && strlen(ora) > 0)
+	if (ora != nullptr)
 	{
-		this->ora = new char[strlen(ora) + 1];
-		strcpy_s(this->ora, strlen(ora) + 1, ora);
+		if (strlen(ora) == 5)
+		{
+			int o, minut;
+			o = atoi(ora);
+			minut = atoi(ora + 3);
+			int copie_ora = o, copie_min = minut;
+			int nrCifOra = 0, nrCifMin = 0;
+			if (ora[0] == '0')
+				nrCifOra++;
+			if (ora[3] == '0')
+				nrCifMin++;
+			if (copie_ora == 0)
+				nrCifOra++;
+			if (copie_min == 0)
+				nrCifMin++;
+			while (copie_ora)
+			{
+				copie_ora /= 10;
+				nrCifOra++;
+			}
+			while (copie_min)
+			{
+				copie_min /= 10;
+				nrCifMin++;
+			}
+			char bufOra[3];
+			char bufMin[3];
+			strncpy_s(bufOra, ora, 2);
+			strncpy_s(bufMin, ora + 3, 2);
+			if (nrCifOra == strlen(bufOra) && nrCifMin == strlen(bufMin))
+			{
+				class::timp t = timp::timp(o, minut);
+				if (!t.getFlag())
+				{
+					if (this->ora != nullptr)
+						delete[] this->ora;
+					this->ora = new char[strlen(ora) + 1];
+					strcpy_s(this->ora, strlen(ora) + 1, ora);
+				}
+			}
+		}
 	}
 }
 spectacolTeatru::spectacolTeatru(const int nrMaximLocuri, const char* denumire, int nrRanduriCat1, int nrBileteCat1, int nrRanduriCat2, int nrBileteCat2): spectacolTeatru(nrMaximLocuri, denumire, nrRanduriCat1, nrBileteCat1)
@@ -218,18 +427,70 @@ spectacolTeatru::spectacolTeatru(const int nrMaximLocuri, const char* denumire, 
 }
 spectacolTeatru::spectacolTeatru(const int nrMaximLocuri, const char* denumire, const char* data, int nrRanduriCat1, int nrBileteCat1, int nrRanduriCat2, int nrBileteCat2) : spectacolTeatru(nrMaximLocuri, denumire, nrRanduriCat1, nrBileteCat1, nrRanduriCat2, nrBileteCat2)
 {
-	if (data != nullptr && strlen(data) > 0)
+	if (data != nullptr)
 	{
-		this->data = new char[strlen(data) + 1];
-		strcpy_s(this->data, strlen(data)+1,data);
+		if (strlen(data) == 10)
+		{
+			int an, luna, zi;
+			an = atoi(data + 6);
+			luna = atoi(data + 3);
+			zi = atoi(data);
+			class::data d = data::data(zi, luna, an);
+			if (d.verificaData())
+			{
+				if (this->data != nullptr)
+					delete[] this->data;
+				this->data = new char[strlen(data) + 1];
+				strcpy_s(this->data, strlen(data) + 1, data);
+			}
+		}
 	}
 }
 spectacolTeatru::spectacolTeatru(const int nrMaximLocuri, const char* denumire, const char* data, const char* ora, int nrRanduriCat1, int nrBileteCat1, int nrRanduriCat2, int nrBileteCat2) : spectacolTeatru(nrMaximLocuri, denumire, data, nrRanduriCat1, nrBileteCat1, nrRanduriCat2, nrBileteCat2)
 {
-	if (ora != nullptr && strlen(ora) > 0)
+	if (ora != nullptr)
 	{
-		this->ora = new char[strlen(ora) + 1];
-		strcpy_s(this->ora,strlen(ora)+1, ora);
+		if (strlen(ora) == 5)
+		{
+			int o, minut;
+			o = atoi(ora);
+			minut = atoi(ora + 3);
+			int copie_ora = o, copie_min = minut;
+			int nrCifOra = 0, nrCifMin = 0;
+			if (ora[0] == '0')
+				nrCifOra++;
+			if (ora[3] == '0')
+				nrCifMin++;
+			if (copie_ora == 0)
+				nrCifOra++;
+			if (copie_min == 0)
+				nrCifMin++;
+			while (copie_ora)
+			{
+				copie_ora /= 10;
+				nrCifOra++;
+			}
+			while (copie_min)
+			{
+				copie_min /= 10;
+				nrCifMin++;
+			}
+			char bufOra[3];
+			char bufMin[3];
+			strncpy_s(bufOra, ora, 2);
+			strncpy_s(bufMin, ora + 3, 2);
+			if (nrCifOra == strlen(bufOra) && nrCifMin == strlen(bufMin))
+			{
+				class::timp t = timp::timp(o, minut);
+				if (!t.getFlag())
+				{
+					if (this->ora != nullptr)
+						delete[] this->ora;
+					this->ora = new char[strlen(ora) + 1];
+					strcpy_s(this->ora, strlen(ora) + 1, ora);
+				}
+			}
+		}
 	}
 }
 spectacolTeatru::spectacolTeatru(const int nrMaximLocuri, const char* denumire, int nrRanduriCat1, int nrBileteCat1, int nrRanduriCat2, int nrBileteCat2, int nrRanduriLoja, int nrBileteLoja) : spectacolTeatru(nrMaximLocuri, denumire, nrRanduriCat1, nrBileteCat1, nrRanduriCat2, nrBileteCat2)
@@ -250,18 +511,70 @@ spectacolTeatru::spectacolTeatru(const int nrMaximLocuri, const char* denumire, 
 }
 spectacolTeatru::spectacolTeatru(const int nrMaximLocuri, const char* denumire, const char* data, int nrRanduriCat1, int nrBileteCat1, int nrRanduriCat2, int nrBileteCat2, int nrRanduriLoja, int nrBileteLoja) : spectacolTeatru(nrMaximLocuri, denumire, nrRanduriCat1, nrBileteCat1, nrRanduriCat2, nrBileteCat2, nrRanduriLoja, nrBileteLoja)
 {
-	if (data != nullptr && strlen(data) > 0)
+	if (data != nullptr)
 	{
-		this->data = new char[strlen(data) + 1];
-		strcpy_s(this->data,strlen(data)+1, data);
+		if (strlen(data) == 10)
+		{
+			int an, luna, zi;
+			an = atoi(data + 6);
+			luna = atoi(data + 3);
+			zi = atoi(data);
+			class::data d = data::data(zi, luna, an);
+			if (d.verificaData())
+			{
+				if (this->data != nullptr)
+					delete[] this->data;
+				this->data = new char[strlen(data) + 1];
+				strcpy_s(this->data, strlen(data) + 1, data);
+			}
+		}
 	}
 }
 spectacolTeatru::spectacolTeatru(const int nrMaximLocuri, const char* denumire, const char* data, const char* ora, int nrRanduriCat1, int nrBileteCat1, int nrRanduriCat2, int nrBileteCat2, int nrRanduriLoja, int nrBileteLoja) : spectacolTeatru(nrMaximLocuri, denumire, data, nrRanduriCat1, nrBileteCat1, nrRanduriCat2, nrBileteCat2, nrRanduriLoja, nrBileteLoja)
 {
-	if (ora != nullptr && strlen(ora) > 0)
+	if (ora != nullptr)
 	{
-		this->ora = new char[strlen(ora) + 1];
-		strcpy_s(this->ora,strlen(ora)+1, ora);
+		if (strlen(ora) == 5)
+		{
+			int o, minut;
+			o = atoi(ora);
+			minut = atoi(ora + 3);
+			int copie_ora = o, copie_min = minut;
+			int nrCifOra = 0, nrCifMin = 0;
+			if (ora[0] == '0')
+				nrCifOra++;
+			if (ora[3] == '0')
+				nrCifMin++;
+			if (copie_ora == 0)
+				nrCifOra++;
+			if (copie_min == 0)
+				nrCifMin++;
+			while (copie_ora)
+			{
+				copie_ora /= 10;
+				nrCifOra++;
+			}
+			while (copie_min)
+			{
+				copie_min /= 10;
+				nrCifMin++;
+			}
+			char bufOra[3];
+			char bufMin[3];
+			strncpy_s(bufOra, ora, 2);
+			strncpy_s(bufMin, ora + 3, 2);
+			if (nrCifOra == strlen(bufOra) && nrCifMin == strlen(bufMin))
+			{
+				class::timp t = timp::timp(o, minut);
+				if (!t.getFlag())
+				{
+					if (this->ora != nullptr)
+						delete[] this->ora;
+					this->ora = new char[strlen(ora) + 1];
+					strcpy_s(this->ora, strlen(ora) + 1, ora);
+				}
+			}
+		}
 	}
 }
 spectacolTeatru::spectacolTeatru(const spectacolTeatru& st): nrMaximLocuri(st.nrMaximLocuri)
@@ -430,7 +743,7 @@ spectacolTeatru& spectacolTeatru::operator=(const spectacolTeatru& st)
 }
 ostream& operator<<(ostream& out, spectacolTeatru st)
 {
-	out << "Spectacolul " << st.denumire << " are loc in data de " << st.data << " la ora " << st.ora << endl;
+	out << "Spectacolul " << st.denumire << " are loc in data de " << st.data << " la ora " << st.ora << "."<<endl;
 	out<<"Numar locuri in sala : " << st.nrMaximLocuri << endl;
 	out << "\n\nBilete categoria 1: " << endl<<endl;
 	if (st.bileteCat1 != nullptr)
@@ -470,6 +783,7 @@ ostream& operator<<(ostream& out, spectacolTeatru st)
 istream& operator>>(istream& in, spectacolTeatru& st)
 {
 	string buffer;
+	char buf[UCHAR_MAX], cc;
 	cout << "Denumire spectacol: ";
 	in.ignore();
 	getline(in, buffer);
@@ -1130,4 +1444,8 @@ int spectacolTeatru::maximdimUIDTotal()
 					max = bileteLoja[i][j].getdimUID();
 	}
 	return max;
+}
+int spectacolTeatru::getNrSpectacol()
+{
+	return nrSpectacol;
 }
