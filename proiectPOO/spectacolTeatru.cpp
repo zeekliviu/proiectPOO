@@ -785,7 +785,6 @@ istream& operator>>(istream& in, spectacolTeatru& st)
 	string buffer;
 	char buf[UCHAR_MAX], cc;
 	cout << "Denumire spectacol: ";
-	in.ignore();
 	getline(in, buffer);
 	if (st.denumire != nullptr)
 		delete[] st.denumire, st.denumire=nullptr;
@@ -911,18 +910,77 @@ istream& operator>>(istream& in, spectacolTeatru& st)
 	strcpy_s(st.ora, strlen(buffer.c_str()) + 1, buffer.c_str());
 	cout << "Locuri disponibile: " << st.nrMaximLocuri<<endl;
 	cout << "Nr. randuri Categoria 1: ";
-	in >> st.nrRanduriCat1;
+	while (true)
+	{
+		if (!fgets(buf, sizeof buf, stdin))
+			break;
+		if (sscanf_s(buf, "%d %c", &st.nrRanduriCat1, &cc) != 1)
+		{
+			cout << "Ai introdus gresit numarul de randuri la Categoria 1. Mai incearca!\nAlegerea ta: ";
+			continue;
+		}
+		break;
+	}
 	cout << "Nr. bilete pe rand Categoria 1: ";
-	in >> st.nrBileteCat1;
+	while(true)
+	{
+		if (!fgets(buf, sizeof buf, stdin))
+			break;
+		if (sscanf_s(buf, "%d %c", &st.nrBileteCat1, &cc) != 1)
+		{
+			cout << "Ai introdus gresit numarul de bilete la Categoria 1. Mai incearca!\nAlegerea ta: ";
+			continue;
+		}
+		break;
+	}
 	cout << "Nr. randuri Categoria 2: ";
-	in >> st.nrRanduriCat2;
+	while (true)
+	{
+		if (!fgets(buf, sizeof buf, stdin))
+			break;
+		if (sscanf_s(buf, "%d %c", &st.nrRanduriCat2, &cc) != 1)
+		{
+			cout << "Ai introdus gresit numarul de randuri la Categoria 2. Mai incearca!\nAlegerea ta: ";
+			continue;
+		}
+		break;
+	}
 	cout << "Nr. bilete pe rand Categoria 2: ";
-	in >> st.nrBileteCat2;
+	while (true)
+	{
+		if (!fgets(buf, sizeof buf, stdin))
+			break;
+		if (sscanf_s(buf, "%d %c", &st.nrBileteCat2, &cc) != 1)
+		{
+			cout << "Ai introdus gresit numarul de bilete la Categoria 2. Mai incearca!\nAlegerea ta: ";
+			continue;
+		}
+		break;
+	}
 	cout << "Nr. randuri Loja: ";
-	in >> st.nrRanduriLoja;
+	while (true)
+	{
+		if (!fgets(buf, sizeof buf, stdin))
+			break;
+		if (sscanf_s(buf, "%d %c", &st.nrRanduriLoja, &cc) != 1)
+		{
+			cout << "Ai introdus gresit numarul de randuri la Loja. Mai incearca!\nAlegerea ta: ";
+			continue;
+		}
+		break;
+	}
 	cout << "Nr. bilete pe rand Loja: ";
-	in >> st.nrBileteLoja;
-	in.ignore();
+	while (true)
+	{
+		if (!fgets(buf, sizeof buf, stdin))
+			break;
+		if (sscanf_s(buf, "%d %c", &st.nrBileteLoja, &cc) != 1)
+		{
+			cout << "Ai introdus gresit numarul de bilete la Loja. Mai incearca!\nAlegerea ta: ";
+			continue;
+		}
+		break;
+	}
 	if (st.nrRanduriCat1 > 0 && st.nrBileteCat1 > 0)
 	{
 		if(st.nrRanduriCat1*st.nrBileteCat1<=st.nrMaximLocuri)
