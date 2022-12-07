@@ -601,6 +601,7 @@ int main()
 						cout << "Alegerea ta nu corespunde spectacolelor disponibile, introdu o alta: ";
 				}
 				cout << "\nDeci doresti sa vezi nr. de bilete rezervate pe categorii la spectacolul" << (*spectacole)[alegereSpectacol].getDenumire() << " - " << (*spectacole)[alegereSpectacol].getData() << " - " << (*spectacole)[alegereSpectacol].getOra() << endl;
+				if ((*spectacole)[alegereSpectacol].getNrLocuriOcupateCat1() != 0)
 					cout << "\nNr. locuri ocupate la Categoria 1: " << (*spectacole)[alegereSpectacol].getNrLocuriOcupateCat1() << endl;
 				else
 					cout << "\nZona Categoria 1 este libera.\n";
@@ -617,6 +618,7 @@ int main()
 		}
 		else if (optiune == 8)
 		{
+			bool ok = false;
 			if(nrCrt)
 			{
 				int alegereSpectacol;
@@ -645,7 +647,7 @@ int main()
 				cout << "\nDeci doresti sa-ti verifici biletul pentru spectacolul" << (*spectacole)[alegereSpectacol].getDenumire() << " - " << (*spectacole)[alegereSpectacol].getData() << " - " << (*spectacole)[alegereSpectacol].getOra() << endl;
 				cout << "Introdu UID-ul tau, apoi apasa Enter: ";
 				char* buffer = new char[(*spectacole)[alegereSpectacol].maximdimUIDTotal() + 1];
-				cin.getline(buffer);
+				cin.getline(buffer, (*spectacole)[alegereSpectacol].maximdimUIDTotal() + 1);
 				if ((*spectacole)[alegereSpectacol].getBileteCat1() != nullptr)
 				{
 					for (int i = 0; i < (*spectacole)[alegereSpectacol].getNrRanduriCat1(); i++)

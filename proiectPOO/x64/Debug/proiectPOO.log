@@ -11,68 +11,80 @@ C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(61,24): warning C4473: 's
 C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(61,24): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
 C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(61,24): message : the missing variadic argument 3 is required by format string '%c'
 C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(61,24): message : this argument is used as a buffer size
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(100,25): warning C4473: 'sscanf_s' : not enough arguments passed for format string
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(100,25): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(100,25): message : the missing variadic argument 3 is required by format string '%c'
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(100,25): message : this argument is used as a buffer size
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(122,25): warning C4473: 'sscanf_s' : not enough arguments passed for format string
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(122,25): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(122,25): message : the missing variadic argument 3 is required by format string '%c'
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(122,25): message : this argument is used as a buffer size
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(179,28): warning C4473: 'sscanf_s' : not enough arguments passed for format string
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(179,28): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(179,28): message : the missing variadic argument 3 is required by format string '%c'
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(179,28): message : this argument is used as a buffer size
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(193,29): warning C4473: 'sscanf_s' : not enough arguments passed for format string
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(193,29): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(193,29): message : the missing variadic argument 3 is required by format string '%c'
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(193,29): message : this argument is used as a buffer size
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(206,28): warning C4473: 'sscanf_s' : not enough arguments passed for format string
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(206,28): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(206,28): message : the missing variadic argument 3 is required by format string '%c'
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(206,28): message : this argument is used as a buffer size
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(220,29): warning C4473: 'sscanf_s' : not enough arguments passed for format string
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(220,29): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(220,29): message : the missing variadic argument 3 is required by format string '%c'
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(220,29): message : this argument is used as a buffer size
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(277,28): warning C4473: 'sscanf_s' : not enough arguments passed for format string
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(277,28): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(277,28): message : the missing variadic argument 3 is required by format string '%c'
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(277,28): message : this argument is used as a buffer size
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(291,29): warning C4473: 'sscanf_s' : not enough arguments passed for format string
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(291,29): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(291,29): message : the missing variadic argument 3 is required by format string '%c'
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(291,29): message : this argument is used as a buffer size
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(304,28): warning C4473: 'sscanf_s' : not enough arguments passed for format string
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(304,28): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(304,28): message : the missing variadic argument 3 is required by format string '%c'
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(304,28): message : this argument is used as a buffer size
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(318,29): warning C4473: 'sscanf_s' : not enough arguments passed for format string
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(318,29): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(318,29): message : the missing variadic argument 3 is required by format string '%c'
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(318,29): message : this argument is used as a buffer size
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(375,28): warning C4473: 'sscanf_s' : not enough arguments passed for format string
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(375,28): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(375,28): message : the missing variadic argument 3 is required by format string '%c'
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(375,28): message : this argument is used as a buffer size
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(389,29): warning C4473: 'sscanf_s' : not enough arguments passed for format string
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(389,29): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(389,29): message : the missing variadic argument 3 is required by format string '%c'
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(389,29): message : this argument is used as a buffer size
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(402,28): warning C4473: 'sscanf_s' : not enough arguments passed for format string
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(402,28): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(402,28): message : the missing variadic argument 3 is required by format string '%c'
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(402,28): message : this argument is used as a buffer size
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(416,29): warning C4473: 'sscanf_s' : not enough arguments passed for format string
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(416,29): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(416,29): message : the missing variadic argument 3 is required by format string '%c'
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(416,29): message : this argument is used as a buffer size
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(459,25): warning C4473: 'sscanf_s' : not enough arguments passed for format string
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(459,25): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(459,25): message : the missing variadic argument 3 is required by format string '%c'
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(459,25): message : this argument is used as a buffer size
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(499,25): warning C4473: 'sscanf_s' : not enough arguments passed for format string
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(499,25): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(499,25): message : the missing variadic argument 3 is required by format string '%c'
-C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(499,25): message : this argument is used as a buffer size
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(101,25): warning C4473: 'sscanf_s' : not enough arguments passed for format string
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(101,25): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(101,25): message : the missing variadic argument 3 is required by format string '%c'
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(101,25): message : this argument is used as a buffer size
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(123,25): warning C4473: 'sscanf_s' : not enough arguments passed for format string
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(123,25): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(123,25): message : the missing variadic argument 3 is required by format string '%c'
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(123,25): message : this argument is used as a buffer size
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(180,28): warning C4473: 'sscanf_s' : not enough arguments passed for format string
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(180,28): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(180,28): message : the missing variadic argument 3 is required by format string '%c'
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(180,28): message : this argument is used as a buffer size
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(194,29): warning C4473: 'sscanf_s' : not enough arguments passed for format string
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(194,29): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(194,29): message : the missing variadic argument 3 is required by format string '%c'
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(194,29): message : this argument is used as a buffer size
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(207,28): warning C4473: 'sscanf_s' : not enough arguments passed for format string
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(207,28): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(207,28): message : the missing variadic argument 3 is required by format string '%c'
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(207,28): message : this argument is used as a buffer size
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(221,29): warning C4473: 'sscanf_s' : not enough arguments passed for format string
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(221,29): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(221,29): message : the missing variadic argument 3 is required by format string '%c'
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(221,29): message : this argument is used as a buffer size
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(278,28): warning C4473: 'sscanf_s' : not enough arguments passed for format string
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(278,28): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(278,28): message : the missing variadic argument 3 is required by format string '%c'
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(278,28): message : this argument is used as a buffer size
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(292,29): warning C4473: 'sscanf_s' : not enough arguments passed for format string
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(292,29): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(292,29): message : the missing variadic argument 3 is required by format string '%c'
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(292,29): message : this argument is used as a buffer size
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(305,28): warning C4473: 'sscanf_s' : not enough arguments passed for format string
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(305,28): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(305,28): message : the missing variadic argument 3 is required by format string '%c'
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(305,28): message : this argument is used as a buffer size
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(319,29): warning C4473: 'sscanf_s' : not enough arguments passed for format string
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(319,29): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(319,29): message : the missing variadic argument 3 is required by format string '%c'
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(319,29): message : this argument is used as a buffer size
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(376,28): warning C4473: 'sscanf_s' : not enough arguments passed for format string
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(376,28): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(376,28): message : the missing variadic argument 3 is required by format string '%c'
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(376,28): message : this argument is used as a buffer size
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(390,29): warning C4473: 'sscanf_s' : not enough arguments passed for format string
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(390,29): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(390,29): message : the missing variadic argument 3 is required by format string '%c'
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(390,29): message : this argument is used as a buffer size
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(403,28): warning C4473: 'sscanf_s' : not enough arguments passed for format string
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(403,28): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(403,28): message : the missing variadic argument 3 is required by format string '%c'
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(403,28): message : this argument is used as a buffer size
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(417,29): warning C4473: 'sscanf_s' : not enough arguments passed for format string
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(417,29): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(417,29): message : the missing variadic argument 3 is required by format string '%c'
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(417,29): message : this argument is used as a buffer size
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(462,25): warning C4473: 'sscanf_s' : not enough arguments passed for format string
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(462,25): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(462,25): message : the missing variadic argument 3 is required by format string '%c'
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(462,25): message : this argument is used as a buffer size
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(504,25): warning C4473: 'sscanf_s' : not enough arguments passed for format string
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(504,25): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(504,25): message : the missing variadic argument 3 is required by format string '%c'
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(504,25): message : this argument is used as a buffer size
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(545,25): warning C4473: 'sscanf_s' : not enough arguments passed for format string
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(545,25): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(545,25): message : the missing variadic argument 3 is required by format string '%c'
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(545,25): message : this argument is used as a buffer size
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(591,25): warning C4473: 'sscanf_s' : not enough arguments passed for format string
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(591,25): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(591,25): message : the missing variadic argument 3 is required by format string '%c'
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(591,25): message : this argument is used as a buffer size
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(635,25): warning C4473: 'sscanf_s' : not enough arguments passed for format string
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(635,25): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(635,25): message : the missing variadic argument 3 is required by format string '%c'
+C:\Users\thepr\Desktop\proiect POO\proiectPOO\main.cpp(635,25): message : this argument is used as a buffer size
   proiectPOO.vcxproj -> C:\Users\thepr\Desktop\proiect POO\proiectPOO\x64\Debug\proiectPOO.exe
